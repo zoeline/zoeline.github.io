@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/lightbox.min.css">
+    <style>
+    .imgSize{
+        width: 100px;
+    }
+    </style>
+</head>
+<body>
+    <a href="/images/lemon.jpg" data-lightbox="image-1" data-title="My caption">
+        <img class="imgSize" src="/images/lemon.jpg" alt="">
+    </a>
+    <a href="/images/fruit.jpg" data-lightbox="image-1" data-title="My caption">
+        <img class="imgSize" src="/images/fruit.jpg" alt="">
+    </a>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/lightbox.min.js"></script>
+    <script>
+        lightbox.option({
+          'resizeDuration': 200,
+          'wrapAround': true,
+          'albumLabel':	"Img %1 of %2"
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+        .bg-bluegreen{
+            background-color: #0597a4;
+        }
+        
+      
+        *{
+            
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+           
+        }
+        .ban1{
+            background-image:url("/images/ban1.jpg"); 
+        }
+        .ban2{
+            background-image:url("/images/ban2.jpg"); 
+        }
+        .ban3{
+            background-image:url("/images/ban3ForComputer.jpg"); 
+            
+        }
+        .my-slider{
+            height: calc(95vh - 40px);
+            width: 100vw;
+            position: relative;
+        }
+        .my-slider li{
+            height: calc(95vh - 40px);
+            width: 67vw;
+            background-size: cover;
+            background-position:right;
+            
+        }
+        .slogan{
+            color:black;
+            font-weight:bolder;
+            position: absolute;
+            right:-25vw;
+            top:60vh;
+        }
+        .ban1{
+            background-image:url("/images/ban.jpg"); 
+        }
+        .ban2{
+            background-image:url("/images/ban2.jpg"); 
+        }
+        .ban3{
+            background-image:url("/images/ban3ForComputer.jpg"); 
+        }
+        .logo{
+            position:absolute;
+            left: calc(67vw + 23vw - 250px) ;
+            top:20%;
+            z-index: 100;
+        }
+        .logo h5{
+            padding-left:25%; 
+        }
+       
+        .logo img{
+            margin: 0;
+            margin-top: 30px;
+            margin-left:5px; 
+            height: 50px;
+            border-radius: 10px;
+             
+        }
+    </style>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/unslider.css">
+    <link rel="stylesheet" href="/css/unslider-dots.css">
+    
+</head>
+<body>
+    
+    
+    <!-- slider -->
+    <div class="my-slider">
+        <!-- LOGO -->
+        <div class="logo">
+              <img src="/images/yo.jpg" alt="">
+            <h1>永大義式冰淇淋</h1>
+            <h5>Yong-Da Gelato</h5>
+        </div>
+            <ul>
+                <li class="ban1"><p class="slogan">悸動一種健康與美味結合的口感。</p></li>
+                <li class="ban2"><p class="slogan">不加鮮奶油、人工香精及防腐劑，<br>
+                                                當天現做，吃的健康、買的安心。</p></li>
+                <li class="ban3"><p class="slogan">時令水果與香濃乳品蹦出的美妙。</p></li>
+            </ul>
+      </div>
+    <!-- navbar-dark->text light; -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-bluegreen">
+        <div class="container">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- 選單定位 mx-auto->置中 -->
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">嚴選食材 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">本季經典</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="#">口味一覽</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="#">最新消息</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="#">把永大帶回家</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="#">聯絡我們</a>
+            </li>
+            <!-- 下拉選單<li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                口味一覽
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                下拉選單內的分隔線<div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li> -->
+           
+            <!-- 無功能選單 <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+          </ul>
+          <!-- 搜尋列 -->
+          <!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form> -->
+        </div>
+    </div>
+      </nav>
+
+
+    
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js"></script>    
+    <script src="/js/unslider.min.js"></script>
+    <Script>
+            
+    
+        jQuery(document).ready(function($) {
+                $('.my-slider').unslider({
+                    autoplay:true,
+                    animation:'fade',
+                    animateHeight:true,
+                    infinite:true,
+                    arrows:false,
+                    speed:1000,
+                });
+            });
+        </Script>
+</body>
+</html>
