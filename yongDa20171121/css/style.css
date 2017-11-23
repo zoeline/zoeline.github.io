@@ -20,7 +20,7 @@
 }
 .my-slider li{
     height: calc(95vh - 40px);
-    width: 67vw;
+    width: 67%;
     background-size: cover;
     background-position:right;
     
@@ -65,7 +65,8 @@
     width: 95vw;
     margin:auto; 
     background-image: url("/yongDa20171121/images/divider.png");
-    margin-top: 60px;
+    margin-top: 80px;
+    margin-bottom:30px; 
 }
 .sedtitle{
     margin: 0;
@@ -81,8 +82,7 @@
 }
 .con{
     margin: auto;
-    padding:30px;
-     
+    padding-left:3%; 
     width: 1130px;
 }
 .con .left{
@@ -101,6 +101,10 @@
 .con .right{
     float: left;
     margin-left: 5vw;
+}
+.intro {
+    background-color: #74dbe2c5;
+    text-align: center;
 }
 .con .right .intro1{
     margin-bottom: 5px;
@@ -133,4 +137,48 @@
     background-image: url("/yongDa20171121/images/intro4.jpg");
     background-size: cover;
     background-position: center;
+}
+.row{
+    
+    margin-left:100px; 
+    width:1130px;
+    height:200px;
+}
+.row img{
+    
+    margin-left:22%;   
+}
+.row2 img{
+    margin-left:32%;
+}
+.menu img{
+  
+    margin-left: 8vw;
+    width: 1130px;
+}
+.box1{
+    
+    padding-top:4px; 
+    margin: auto;
+    border: 1px solid #80c5da;
+    width: 600px;
+    height: 400px;
+}
+.box2{
+    
+    border: 1px solid #80c5da;
+    width: 590px;
+    height: 390px;
+    margin: auto;
+}
+.con img{
+    width: 45%;
+    
+}
+#map {
+    height: 350px;
+    width: 100%;
+   }
+.inf h6{
+    text-align: center;
 }
