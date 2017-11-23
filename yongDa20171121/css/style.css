@@ -63,23 +63,12 @@
     clear: left;
     height: 15px;
     width: 95vw;
-    margin:auto; 
+   
     background-image: url("/yongDa20171121/images/divider.png");
     margin-top: 80px;
     margin-bottom:30px; 
 }
-.sedtitle{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 185px;
-    height: 15px;
-    margin: auto;
-    color: black;
-    font-weight: bolder;
-    background-color:white; 
-    letter-spacing:15px;
-}
+
 .con{
     margin: auto;
     padding-left:3%; 
@@ -138,19 +127,8 @@
     background-size: cover;
     background-position: center;
 }
-.row{
-    
-    margin-left:100px; 
-    width:1130px;
-    height:200px;
-}
-.row img{
-    
-    margin-left:22%;   
-}
-.row2 img{
-    margin-left:32%;
-}
+
+
 .menu img{
   
     margin-left: 8vw;
