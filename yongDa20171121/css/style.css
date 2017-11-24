@@ -1,4 +1,4 @@
-
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
 
 .bg-bluegreen{
     background-color: #0597a4;
@@ -6,41 +6,60 @@
 
 
 *{
-
+    font-family: Arial, cwtexfangsong, "全字庫正楷體", "TW-Kai", "標楷體", "BiauKai", DFKai-SB, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
    
 }
-
-.my-slider{
-    height: calc(95vh - 40px);
-    width: 100vw;
-    position: relative;
+.padForNav{
+    padding-top: 30px !important;
 }
-.my-slider li{
+
+
+.swiper-container {
+    width: 100%;
     height: calc(95vh - 40px);
-    width: 67%;
-    background-size: cover;
-    background-position:right;
+    margin-left: 0 !important;
+    
+  }
+.swiper-slide {
+    text-align: left;
+    font-size: 18px;
+    
+     /* Center slide text vertically */
+     display: -webkit-box;
+     display: -ms-flexbox;
+     display: -webkit-flex;
+     display: flex;
+     -webkit-box-pack: left;
+     -ms-flex-pack: left;
+     -webkit-justify-content: left;
+     justify-content: left;
+     -webkit-box-align: left;
+     -ms-flex-align: left;
+     -webkit-align-items: left;
+     align-items: left;
+}
+.swiper-slide img{
+    width: 67vw;
+    height: calc(95vh - 40px);
     
 }
+
+
+
+
 .slogan{
+    
     color:black;
     font-weight:lighter;
     position: absolute;
-    right:-25vw;
+    right:6.5vw;
     top:60vh;
+
 }
-.ban1{
-    background-image:url("/yongDa20171121/images/ban.jpg"); 
-}
-.ban2{
-    background-image:url("/yongDa20171121/images/ban2.jpg"); 
-}
-.ban3{
-    background-image:url("/yongDa20171121/images/ban3ForComputer.jpg"); 
-}
+
 .logo{
     position:absolute;
     left: calc(67vw + 23vw - 250px) ;

@@ -17,25 +17,38 @@
     <link rel="stylesheet" href="/yongDa20171121/css/unslider.css">
     <link rel="stylesheet" href="/yongDa20171121/css/unslider-dots.css">
     <link href="/yongDa20171121/css/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/yongDa20171121/css/swiper.css">
 </head>
 <body>
     
-    
-    <!-- slider -->
-    <div class="my-slider">
-        <!-- LOGO -->
-        <div class="logo">
-              <img src="/yongDa20171121/images/yongda.png" alt="">
-            <h1>永大義式冰淇淋</h1>
-            <h5>Yong-Da Gelato</h5>
-        </div>
-            <ul>
-                <li class="ban1"><p class="slogan">悸動一種健康與美味結合的口感。</p></li>
-                <li class="ban3"><p class="slogan">不加鮮奶油、人工香精及防腐劑，<br>
-                                                當天現做，吃的健康、買的安心。</p></li>
-                <li class="ban2"><p class="slogan">時令水果與香濃乳品蹦出的美妙。</p></li>
-            </ul>
-      </div>
+  <div class="swiper-container">
+      
+  <div class="swiper-wrapper">
+    <div class="swiper-slide ba1">
+      <img src="/yongDa20171121/images/ban.jpg" alt="">
+      <p class="slogan">悸動一種健康與美味結合的口感。</p>
+    </div>
+    <div class="swiper-slide ba2">
+      <img src="/yongDa20171121/images/ban2.jpg" alt="">
+      <p class="slogan">不加鮮奶油、人工香精及防腐劑，<br>當天現做，吃的健康、買的安心。</p>
+    </div>
+    <div class="swiper-slide ba3">
+      <img src="/yongDa20171121/images/ban3ForComputer.jpg" alt="">
+      <p class="slogan">時令水果與香濃乳品蹦出的美妙。</p>
+    </div>
+  </div>
+  
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+</div>
+<div class="logo">
+    <img src="/yongDa20171121/images/yongda.png" alt="">
+  <h1>永大義式冰淇淋</h1>
+  <h5>Yong-Da Gelato</h5>
+      
+</div>
+
+  
     <!-- navbar-dark->text light; -->
    
     <nav id="navbar-example2" class=" navbar navbar-light bg-info justify-content-center sticky-top">
@@ -72,10 +85,10 @@
       </div>
 <!-- block1st -->
     
-    <div class="container">
+    <div id="food" class="container padForNav">
         <div class="divider row mb-3 mt-5">
             <div class="col-5"></div>
-            <h6 id="food" class="h-100 col-2 text-dark bg-white text-md-center font-weight-bold">/嚴選食材/</h6>
+            <h6  class="h-100 col-2 text-dark bg-white text-md-center font-weight-bold">/嚴選食材/</h6>
             <div class="col-5"></div>
         </div>
         <div class="row">
@@ -98,11 +111,10 @@
       </div>
     </div>
 <!-- block2ed -->
-    
-    <div class="container">
+    <div id="season" class="container padForNav">
         <div class="divider row mb-3 mt-5">
             <div class="col-5"></div>
-            <h6 id="season" class="h-100 col-2 text-dark bg-white text-md-center font-weight-bold">/本季經典/</h6>
+            <h6  class="h-100 col-2 text-dark bg-white text-md-center font-weight-bold">/本季經典/</h6>
             <div class="col-5"></div>
         </div>
     <div class="row ">
@@ -140,11 +152,10 @@
     </div>
 </div>
 <!-- block3rd -->
-    
-    <div class="menu container">
+    <div id="menu" class="menu container padForNav">
         <div class="divider row mb-3 mt-5">
             <div class="col-5"></div>
-            <h6 id="menu" class="h-100 col-2 text-dark bg-white text-md-center font-weight-bold">/口味一覽/</h6>
+            <h6  class="h-100 col-2 text-dark bg-white text-md-center font-weight-bold">/口味一覽/</h6>
             <div class="col-5"></div>
         </div>
       <div class="row">
@@ -154,13 +165,13 @@
       </div>
       
     </div>
-    <!--block 4th  -->
+<!--block 4th  -->
     <div class="news">
-    <div class="container">
+    <div id="news" class="container padForNav">
         <div class="row"></div>
         <div class="divider row mb-3 mt-5">
             <div class="col-5"></div>
-            <h6 id="news" class="h-100 col-2 text-dark  text-md-center font-weight-bold">/最新消息/</h6>
+            <h6  class="h-100 col-2 text-dark  text-md-center font-weight-bold">/最新消息/</h6>
             <div class="col-5"></div>
         </div>
         <div class="row border border-info">
@@ -197,11 +208,11 @@
     </div>
   </div>
     
-    <!-- block 5th -->
-    <div class="container">
+<!-- block 5th -->
+    <div id="take" class="container padForNav">
         <div class="divider row mb-3 mt-5">
             <div class="col-5"></div>
-            <h6 id="take" class="h-100 col-2 text-dark bg-white text-md-center font-weight-bold">/外帶永大/</h6>
+            <h6  class="h-100 col-2 text-dark bg-white text-md-center font-weight-bold">/外帶永大/</h6>
             <div class="col-5"></div>
         </div>
       <div class="row">
@@ -212,13 +223,11 @@
       </div>
     </div>
 
-
-    <!-- block 6th -->
-    
-    <div class="container">
-        <div class="divider row mb-3 mt-5">
+<!-- block 6th --> 
+    <div id="call" class="container padForNav">
+        <div  class="divider row mb-3 mt-5">
             <div class="col-5"></div>
-            <h6 id="call" class="h-100 col-2 text-dark bg-white text-md-center font-weight-bold">/聯絡我們/</h6>
+            <h6  class="h-100 col-2 text-dark bg-white text-md-center font-weight-bold">/聯絡我們/</h6>
             <div class="col-5"></div>
         </div>
     </div>
@@ -345,8 +354,10 @@
     <script>
             AOS.init();
     </script>
-    <Script>
-            
+    <script src="/yongDa20171121/js/swiper.js"></script>
+    
+      </script>
+    <Script>   
     
         jQuery(document).ready(function($) {
                 $('.my-slider').unslider({
@@ -358,6 +369,24 @@
                     speed:1000,
                 });
             });
+    $(document).ready(function () {
+    //initialize swiper when document ready
+    var mySwiper = new Swiper ('.swiper-container', {
+      // Optional parameters
+      direction: 'vertical',
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    })
+  });
         </Script>
 </body>
 </html>
