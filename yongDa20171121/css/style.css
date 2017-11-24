@@ -6,7 +6,7 @@
 
 
 *{
-    
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -60,103 +60,62 @@
      
 }
 .divider{
-    clear: left;
-    height: 15px;
-    width: 95vw;
-   
+    height: 20px;
     background-image: url("/yongDa20171121/images/divider.png");
-    margin-top: 80px;
-    margin-bottom:30px; 
+     
 }
 
-.con{
-    margin: auto;
-    padding-left:3%; 
-    width: 1130px;
-}
-.con .left{
-    margin-left: 15vw;
-    float: left;
-    padding-top:40px; 
-}
-.con .left h6{
-    margin-bottom:20px; 
-    padding-left: 10vw;
-}
-.con .left p{
-    margin-bottom:25px; 
-    
-}
-.con .right{
-    float: left;
-    margin-left: 5vw;
-}
+
 .intro {
     background-color: #74dbe2c5;
     text-align: center;
 }
-.con .right .intro1{
-    margin-bottom: 5px;
-    height: 100px;
-    width: 300px;
+.intro1{
     background-image: url("/yongDa20171121/images/intro1.jpg");
     background-size: cover;
     background-position: center;
 }
-.con .right .intro2{
-    margin-bottom: 5px;
-    height: 100px;
-    width: 300px;
+.intro2{
     background-image: url("/yongDa20171121/images/intro2.jpg");
     background-size: cover;
     background-position: center;
 }
-.con .right .intro3{
-    margin-bottom: 5px;
-    height: 100px;
-    width: 300px;
+.intro3{
     background-image: url("/yongDa20171121/images/intro3.jpg");
     background-size: cover;
     background-position: center;
 }
-.con .right .intro4{
-    margin-bottom: 30px;
-    height: 100px;
-    width: 300px;
+.intro4{
     background-image: url("/yongDa20171121/images/intro4.jpg");
     background-size: cover;
     background-position: center;
 }
+.news{
+    height: 70vh;
+    background-image: url("/yongDa20171121/images/bg-05.jpg");
+    background-size: cover;
+}
+.news h6{
+    
+    background-color: #fcd4fc;
+}
 
-
-.menu img{
-  
-    margin-left: 8vw;
-    width: 1130px;
-}
-.box1{
-    
-    padding-top:4px; 
-    margin: auto;
-    border: 1px solid #80c5da;
-    width: 600px;
-    height: 400px;
-}
-.box2{
-    
-    border: 1px solid #80c5da;
-    width: 590px;
-    height: 390px;
-    margin: auto;
-}
-.con img{
-    width: 45%;
-    
-}
 #map {
     height: 350px;
     width: 100%;
    }
 .inf h6{
     text-align: center;
+}
+.footer{
+    margin-top:20vh; 
+    background-image: url("/yongDa20171121/images/footer-bg.jpg");
+    background-size: cover;
+    height: 30vh;
+    position: relative; 
+}
+.footer img{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
