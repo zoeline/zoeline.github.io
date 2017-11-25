@@ -3,7 +3,9 @@
 .bg-bluegreen{
     background-color: #0597a4;
 }
-
+.bg-dg{
+    background-color:#1b7279;
+}
 
 *{
     font-family: Arial, cwtexfangsong, "全字庫正楷體", "TW-Kai", "標楷體", "BiauKai", DFKai-SB, sans-serif;
