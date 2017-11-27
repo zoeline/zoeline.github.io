@@ -23,7 +23,7 @@
     width: 100%;
     height: calc(95vh - 40px);
     margin-left: 0 !important;
-    
+  
   }
 .swiper-slide {
     text-align: left;
@@ -49,15 +49,12 @@
     
 }
 
-
-
-
 .slogan{
     
     color:black;
     font-weight:lighter;
     position: absolute;
-    right:6.5vw;
+    left: calc(67vw + 23vw - 250px) ;
     top:60vh;
 
 }
@@ -80,12 +77,29 @@
     border-radius: 10px;
      
 }
+@media screen and (max-width: 375px) {
+    .swiper-container{
+        height: 67vh;
+    }
+    .swiper-slide img{
+        width: 100vw;
+    }
+    .slogan{
+        top:50vh;
+        left: 10vw;
+        
+    }
+    .logo{
+        top:5vh;
+        left:10vw ;
+    }
+    
+}
 .divider{
     height: 20px;
     background-image: url("/yongDa20171121/images/divider.png");
-     
+    background-repeat: no-repeat; 
 }
-
 
 .intro {
     background-color: #74dbe2c5;
@@ -116,10 +130,7 @@
     background-image: url("/yongDa20171121/images/bg-05.jpg");
     background-size: cover;
 }
-.news h5{
-    
-    background-color: #fcd4fc;
-}
+
 
 #map {
     height: 350px;
