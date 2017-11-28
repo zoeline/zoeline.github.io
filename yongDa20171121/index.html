@@ -18,24 +18,25 @@
     <link rel="stylesheet" href="/yongDa20171121/css/unslider-dots.css">
     <link href="/yongDa20171121/css/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="/yongDa20171121/css/swiper.css">
+    <link rel="stylesheet" href="/yongDa20171121/css/lightbox.min.css">
 </head>
 <body>
-    
+ 
   <div class="swiper-container">
       
   <div class="swiper-wrapper">
     <div class="swiper-slide ba1">
         
-      <img src="/yongDa20171121/images/ban.jpg" alt="">
+      <img class="col-12 col-lg-8" src="/yongDa20171121/images/ban.jpg" alt="">
         
       <p class="slogan">悸動一種健康與美味結合的口感。</p>
     </div>
     <div class="swiper-slide ba2">
-      <img src="/yongDa20171121/images/ban2.jpg" alt="">
+      <img class="col-12 col-lg-8"src="/yongDa20171121/images/ban2.jpg" alt="">
       <p class="slogan">不加鮮奶油、人工香精及防腐劑，<br>當天現做，吃的健康、買的安心。</p>
     </div>
     <div class="swiper-slide ba3">
-      <img src="/yongDa20171121/images/ban3ForComputer.jpg" alt="">
+      <img class="col-12 col-lg-8"src="/yongDa20171121/images/ban3ForComputer.jpg" alt="">
       <p class="slogan">時令水果與香濃乳品蹦出的美妙。</p>
     </div>
   </div>
@@ -52,7 +53,8 @@
 
   
 <!-- navbar-dark->text light; -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dg font-weight-bold sticky-top">
+<div class="col-12 sticky-top">
+<nav class=" navbar navbar-expand-lg navbar-dark bg-dg font-weight-bold ">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -78,19 +80,19 @@
         </li>
       </ul>
     </div>
-</nav>
+</nav></div>
    
 <!-- block1st -->
     
     <div id="food" class="container padForNav">
         <div class="row mb-3 mt-5">
-            <div class="divider col-4"></div>
-            <h5  class="h-100 col-4 text-dark bg-white text-md-center text-nowrap">/&nbsp;嚴&nbsp;選&nbsp;食&nbsp;材&nbsp;/</h5>
-            <div class="divider col-4 "></div>
+            <div class="divider  col-4"></div>
+            <h5  class="h-100  col-4 text-dark bg-white text-md-center text-nowrap">/&nbsp;嚴&nbsp;選&nbsp;食&nbsp;材&nbsp;/</h5>
+            <div class="divider  col-4 "></div>
         </div>
         <div class="row">
-            <div class="col-2"></div>
-          <div class="col-4 text-center">
+           
+          <div class="text-1 col-md-6 text-center">
               <h6>乳品</h6>
               <P>鮮奶是使用有鮮乳標章的加大乳品。</P>
               <h6>巧克力</h6>
@@ -98,13 +100,13 @@
               <h6>水果</h6>
               <P>每天到市場選購當季水果，其實水果的價</br>格浮動的很厲害，品質也不穩定，因此</br>若買來做了覺得不夠好吃就不會上架販售，</br>是我們的原則。</P>
           </div>
-          <div class="col-4">
+          <div class="col-12 col-md-6">
               <div class="mb-1 h-25 intro1"><h6 class="intro">milk</h6> </div>
               <div class="mb-1 h-25 intro2"><h6 class="intro">fruit</h6> </div>
               <div class="mb-1 h-25 intro3"><h6 class="intro">chocolate</h6></div>
-              <div class=" h-25 intro4"><h6 class="intro">tea</h6></div>
+              <div class="h-25 h-md-100 intro4"><h6 class="intro">tea</h6></div>
           </div>
-          <div class="col-2"></div>
+         
       </div>
     </div>
 <!-- block2ed -->
@@ -151,9 +153,11 @@
             <div class="divider col-4"></div>
         </div>
       <div class="row">
-          <div class="col-1"></div>
-        <img class="h-100 col-10" src="/yongDa20171121/images/menu-01.jpg" alt="" style="box-shadow:0px 0px 5px gray">
-        <div class="col-1"></div>
+          <a class="col-10 col-md-12 ml-auto mr-auto" style="box-shadow:0px 0px 5px gray" href="/yongDa20171121/images/menu-01.jpg" data-lightbox="image-1" data-title="My caption">
+            <img class="w-100 " src="/yongDa20171121/images/menu-01.jpg" alt="">
+        </a>
+        
+       
       </div>
       
     </div>
@@ -202,7 +206,9 @@
       <div class="row">
         <div class="col-1"></div>
         <img class="col-5 h-100 bg-light" src="/yongDa20171121/images/shopping-04.jpg" alt="" style="box-shadow: 0px 0px 5px black;">
-        <img class="col-5 h-100" src="/yongDa20171121/images/ruten-04.jpg" alt="">
+        <div class="col-5 h-100">
+
+        </div>
         <div class="col-1"></div>
       </div>
     </div>
@@ -222,18 +228,30 @@
   </div>
   <div class="footer">
     <img class="h-50" src="/yongDa20171121/images/logo-footer.png" alt="">
-  
+    
   <div class="container">
+   
     <div class="row">
-      <div class="col-12">
-          <a ><embed src="/yongDa20171121/images/instagram-logo.svg" width="45" height="45" type="image/svg+xml"/></a>&nbsp;&nbsp;&nbsp;
-            <embed href="https://www.instagram.com/yd.gelato/" src="/yongDa20171121/images/facebook-logo.svg" width="45" height="45" type="image/svg+xml"/>&nbsp;&nbsp;&nbsp;
-            <embed src="/yongDa20171121/images/youtube.svg" width="45" height="45" type="image/svg+xml"/>&nbsp;&nbsp;&nbsp;
-            <embed src="/yongDa20171121/images/twitter-logo.svg" width="45" height="45" type="image/svg+xml"/>
+      <div class="col-6 mr-auto ml-auto">
+          <a class="ml-4 col-1 font-weight-bold text-light text-wrap"href="#food">嚴選食材</a>
+          <a class="ml-4 col-1 font-weight-bold text-light text-wrap"href="#season">本季經典</a>
+          <a class="ml-4 col-1 font-weight-bold text-light text-wrap" href="#menu">口味一覽</a>
+          <a class="ml-4 col-1 font-weight-bold text-light text-wrap"href="#news">最新消息</a>
+          <a class="ml-4 col-1 font-weight-bold text-light text-wrap"href="#take">外帶永大</a>          
+          <a class="ml-4 col-1 font-weight-bold text-light text-wrap"href="#call">聯絡我們</a>
+      </div>
+      <div class="col-6 mr-auto ml-auto"> 
+          <div class="social">社群媒體</div>
+          <div class="line"></div>
+          <a href="https://www.instagram.com/yd.gelato/" class="ig ml-5"></a>
+          <a href="https://www.facebook.com/yd.gelato/" class="fb ml-5"></a>
+          <a href="https://www.youtube.com/channel/UC3ugsyCiqps1qx_nrEsXUeA" class="yt ml-5"></a>
+          <a href="https://twitter.com/8d518de172c54c8?lang=zh-tw" class="tw ml-5"></a>
       </div>
     </div>
   </div>
 </div>
+<!-- map -->
     <script>
         function initMap() {
           var uluru = {lat: 23.476264, lng:120.452154};
@@ -339,12 +357,20 @@
     <script src="/yongDa20171121/js/bootstrap.min.js"></script>    
     <script src="/yongDa20171121/js/unslider.min.js"></script>
     <script src="/yongDa20171121/js/aos.js"></script>
+    <script src="/yongDa20171121/js/lightbox.min.js"></script>
+    <script>
+        lightbox.option({
+          'resizeDuration': 200,
+          'wrapAround': true,
+          'albumLabel':	"Img %1 of %2"
+        })
+    </script>
     <script>
             AOS.init({
               offset:     0,
-              delay:      0,
+              
               easing:     'ease',
-              duration:   50,
+              duration:   500,
               disable:    false,
             });
             AOS.refreshHard({

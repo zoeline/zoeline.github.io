@@ -17,8 +17,7 @@
 }
 .padForNav{
     padding-top: 30px !important;
-}
-
+} 
 
 .swiper-container {
     width: 100%;
@@ -45,7 +44,7 @@
      align-items: left;
 }
 .swiper-slide img{
-    width: 67vw;
+    
     height: calc(95vh - 40px);
     
 }
@@ -78,24 +77,7 @@
     border-radius: 10px;
      
 }
-@media screen and (max-width: 375px) {
-    .swiper-container{
-        height: 67vh;
-    }
-    .swiper-slide img{
-        width: 100vw;
-    }
-    .slogan{
-        top:50vh;
-        left: 10vw;
-        
-    }
-    .logo{
-        top:5vh;
-        left:10vw ;
-    }
-    
-}
+
 .divider{
     height: 20px;
     background-image: url("/yongDa20171121/images/divider.png");
@@ -131,8 +113,11 @@
     background-image: url("/yongDa20171121/images/bg-05.jpg");
     background-size: cover;
 }
-
-
+@media screen and (max-width:720px){
+    .text-1{
+        display: none;
+    }
+}
 #map {
     height: 350px;
     width: 100%;
@@ -151,4 +136,42 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+.social{
+    font-size: 20px;
+    margin-left:10%; 
+    color:white;
+    margin-top:5vh; 
+}
+.line{
+    background-color: white;
+    height: 2px;
+    width: 75%;
+    z-index: 2000;
+    margin-top:5vh; 
+    margin-left:10%; 
+}
+.footer a{
+    margin-top: 5vh;
+    display:inline-block;
+   
+    width:45px;
+    height:45px;
+    
+}
+.ig{
+    background-image: url("/yongDa20171121/images/instagram-logo.svg");
+    background-size: cover;
+}
+.fb{
+    background-image: url("/yongDa20171121/images/facebook-logo.svg");
+    background-size: cover;
+}
+.yt{
+    background-image: url("/yongDa20171121/images/youtube.svg");
+    background-size: cover;
+}
+.tw{
+    background-image: url("/yongDa20171121/images/twitter-logo.svg");
+    background-size: cover;
 }
