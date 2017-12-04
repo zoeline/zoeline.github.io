@@ -21,9 +21,9 @@
             <img class="logo" src="/datapro/images/c7.png" alt="" > 
             <img class="col-12" src="/datapro/images/banner-02.jpg" alt=""></div>  
        
-        <div class="mt-0 row"> 
+        <div class=" row"> 
             <!-- NAV -->
-            <nav class="navbar navbar-expand-lg ">
+            <nav class="mt-5 navbar navbar-expand-lg ">
                 <div class=" btn-lg nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
@@ -40,16 +40,7 @@
 <!-- HOME -->
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <!-- NEWS -->
-                        <div class="holder">
-
-                        </div>
-
-                        <ul id="itemContainer">
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                        </ul>
-                        <div class="holder"></div>
+                      
                         <div class="title text-center "><p>最新消息&nbsp;&nbsp;NEWS</p>
                           
                         
@@ -135,11 +126,11 @@
 <!-- 未來方向 -->
                         <div class="tab-pane fade" id="v-pills-future" role="tabpanel" aria-labelledby="v-pills-future-tab">
                             <div class="title"></div>
-                            <div class="card text-cente">
-                                <div class="card-body ">
+                            <div class="card text-left mt-5">
+                                <div class="card-body mt-5">
                                     <h4 class="card-title">升學管道</h4>
                                     <h6 class="card-subtitle mb-2 text-muted">本科畢業生可經由下列管道進入科技大學、一般大學、軍警院校等，繼續深造：</h6>
-                                    <p class="card-text r">
+                                    <p class="card-text ">
                                         <li>技優保送</br>&nbsp;&nbsp;&nbsp;&nbsp;全國技藝競賽前三名學生，直接保送 國立科技大學</li>
                                         <ul class="unicode_list_image">
                                             <li>104年黃省喬同學 榮獲「網頁設計職種」金手獎第1名，獲保送國立台北科技大學</li>
@@ -194,9 +185,15 @@
 <!-- 榮譽佳績 -->
                         <div class="tab-pane fade" id="v-pills-goods" role="tabpanel" aria-labelledby="v-pills-goods-tab">1213</div>
                         <!-- 師資陣容 -->
-                        <div class="tab-pane fade" id="v-pills-teacher" role="tabpanel" aria-labelledby="v-pills-teacher-tab">tt</div> 
+                        <div class="tab-pane fade" id="v-pills-teacher" role="tabpanel" aria-labelledby="v-pills-teacher-tab">
+                          <img class="mt-5" src="/datapro/images/teacher.jpg" alt="" style="height:400px">  
+                        </div> 
                         <!-- 科史沿革 -->
-                        <div class="tab-pane fade" id="v-pills-history" role="tabpanel" aria-labelledby="v-pills-history-tab">1415</div>  
+                        <div class="tab-pane fade" id="v-pills-history" role="tabpanel" aria-labelledby="v-pills-history-tab">
+                           <h5 class="ml-5 mt-5">   本校於76年8月增設資料處理科，以培植優秀的資訊管理人才為目的，多年來不論設備或師資均精益求精，學生學習成效優良，各項技藝競賽屢獲佳績，深受各界肯定與好評，目前本科每一年級各有3班，共計9班。
+                                
+                                       本科教師陣容堅強、學有專精、教學認真，學生學習多元，積極參加各職類技能檢定且能「一人多證」，全國技藝競賽表現更是超群。為因應學生升學需求，本科也將升學輔導列為科內重點工作之一，歷年升學表現成績斐然，因此得以吸引中部地區優秀學生選擇就讀。</h5> 
+                        </div>  
          
           
                 </div>
@@ -211,11 +208,7 @@
     <script src="/datapro/js/swiper.js"></script>
     
     <script>
-        $(function(){
-            $("div.holder").jPage({
-                containerID:"itemContainer"
-            });
-        });
+        
              var swiper = new Swiper('.swiper-container', {
                 slidesPerView: 3,
                 spaceBetween: 10,
