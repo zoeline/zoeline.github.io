@@ -88,22 +88,38 @@
     background-color: #74dbe2c5;
     text-align: center;
 }
+.intro1 p{
+    color: antiquewhite;
+}
+.intro2 p{
+    color: antiquewhite;
+}
+.intro3 p{
+    color: antiquewhite;
+}
+.intro4 p{
+    color: antiquewhite;
+}
 .intro1{
+    padding: 5px;
     background-image: url("/yongDa20171121/images/intro1.jpg");
     background-size: cover;
     background-position: center;
 }
 .intro2{
+    padding: 5px;
     background-image: url("/yongDa20171121/images/intro2.jpg");
     background-size: cover;
     background-position: center;
 }
 .intro3{
+    padding: 5px;
     background-image: url("/yongDa20171121/images/intro3.jpg");
     background-size: cover;
     background-position: center;
 }
 .intro4{
+    padding: 5px;
     background-image: url("/yongDa20171121/images/intro4.jpg");
     background-size: cover;
     background-position: center;
@@ -115,6 +131,9 @@
 }
 @media screen and (max-width:720px){
     .text-1{
+        display: none;
+    }
+    .news{
         display: none;
     }
 }
@@ -148,11 +167,11 @@
     height: 2px;
     width: 75%;
     z-index: 2000;
-    margin-top:5vh; 
+    margin-top:15px; 
     margin-left:10%; 
 }
 .footer a{
-    margin-top: 5vh;
+    margin-top: 20px;
     display:inline-block;
    
     width:45px;
