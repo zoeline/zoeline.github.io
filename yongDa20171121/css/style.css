@@ -125,16 +125,18 @@
     background-position: center;
 }
 .news{
-    height: 70vh;
+    overflow: hidden;
     background-image: url("/yongDa20171121/images/bg-05.jpg");
-    background-size: cover;
+    background-size: contain;
+    /*--background-color: #FFDFFE;*/
 }
 @media screen and (max-width:720px){
     .text-1{
         display: none;
     }
     .news{
-        display: none;
+       
+        overflow: hidden;
     }
 }
 #map {
