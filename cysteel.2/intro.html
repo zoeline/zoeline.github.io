@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>嘉鋼</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<link rel="icon" type="image/png" href="http://hauryang.go168.com.tw/go168/ezcatfiles/hauryang/img/img/7435/LOGOcysteel-01.png" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<style>
+	.main_h {
+  position: fixed;
+  top: 0px;
+  max-height: 70px;
+  z-index: 999;
+  width: 100%;
+  padding-top: 17px;
+  background: none;
+  overflow: hidden;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  opacity: 0;
+  top: -100px;
+  padding-bottom: 6px;
+  font-family: "Montserrat", sans-serif;
+}
+@media only screen and (max-width: 766px) {
+  .main_h {
+    padding-top: 25px;
+  }
+}
+
+.open-nav {
+  max-height: 400px !important;
+}
+.open-nav .mobile-toggle {
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+}
+
+.sticky {
+  background-color: rgba(255, 255, 255, 0.93);
+  opacity: 1;
+  top: 0px;
+  border-bottom: 1px solid gainsboro;
+}
+
+.logo {
+  width: 50px;
+  font-size: 25px;
+  color: #8f8f8f;
+  text-transform: uppercase;
+  float: left;
+  display: block;
+  margin-top: 0;
+  line-height: 1;
+	margin-bottom: 10px;
+	
+	height: 50px;
+	
+}
+@media only screen and (max-width: 766px) {
+  .logo {
+		float: none;
+	
+		
+  }
+}
+
+nav {
+  float: right;
+	width: 90%;
+	
+}
+@media only screen and (max-width: 766px) {
+  nav {
+    width: 100%;
+  }
+}
+nav ul {
+  list-style: none;
+  overflow: hidden;
+  text-align: right;
+	float: right;
+	
+}
+@media only screen and (max-width: 766px) {
+  nav ul {
+    padding-top: 10px;
+    margin-bottom: 22px;
+    float: left;
+    text-align: center;
+		width: 100%;
+		
+  }
+}
+nav ul li {
+  display: inline-block;
+  margin-left: 35px;
+	line-height: 1.5;
+
+}
+@media only screen and (max-width: 766px) {
+  nav ul li {
+    width: 100%;
+    padding: 7px 0px;
+		margin: 0;
+		
+  }
+}
+nav ul a {
+  color: #888888;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.mobile-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  right: 22px;
+  top: 0;
+  width: 30px;
+  -webkit-transition: all 200ms ease-in;
+  -moz-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+}
+@media only screen and (max-width: 766px) {
+  .mobile-toggle {
+    display: block;
+  }
+}
+.mobile-toggle span {
+  width: 30px;
+  height: 4px;
+  margin-bottom: 6px;
+  border-radius: 1000px;
+  background: #8f8f8f;
+  display: block;
+}
+
+.row {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 2%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #8f8f8f;
+  background: white;
+  font-family: "Cardo", serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 1.8;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 17px;
+  line-height: 2;
+}
+
+.content {
+  padding: 50px 2% 250px;
+}
+
+.hero {
+  position: relative;
+  background: url(http://www.philippefercha.com/cd/toggle-menu-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+  padding-top: 110px;
+  min-height: 500px;
+  letter-spacing: 2px;
+  font-family: "Montserrat", sans-serif;
+}
+.hero h1 {
+  font-size: 50px;
+  line-height: 1.3;
+}
+.hero h1 span {
+  font-size: 25px;
+  color: #e8f380;
+  border-bottom: 2px solid #e8f380;
+  padding-bottom: 12px;
+  line-height: 3;
+}
+
+.mouse {
+  display: block;
+  margin: 0 auto;
+  width: 26px;
+  height: 46px;
+  border-radius: 13px;
+  border: 2px solid #e8f380;
+  position: absolute;
+  bottom: 40px;
+  position: absolute;
+  left: 50%;
+  margin-left: -26px;
+}
+.mouse span {
+  display: block;
+  margin: 6px auto;
+  width: 2px;
+  height: 2px;
+  border-radius: 4px;
+  background: #e8f380;
+  border: 1px solid transparent;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: scroll;
+  animation-name: scroll;
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+}
+@keyframes scroll {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+}
+</style>	
+</head>
+<body>
+		<header class="main_h">
+
+				<div class="row">
+						<a class="logo" href="index.html"><img src="http://hauryang.go168.com.tw/go168/ezcatfiles/hauryang/img/img/7435/logo-01.svg" alt="cysteellogo" style="height:80%;"></a>
+		
+						<div class="mobile-toggle">
+								<span></span>
+								<span></span>
+								<span></span>
+						</div>
+		
+						<nav>
+								<ul style="font-weight: 900;">
+                  <li><a href="intro.html">公司介紹</a></li>
+                  <li><a href="equipments.html">設備介紹</a></li>
+                  <li><a href="product.html">產品介紹</a></li>
+                  <li><a href="environment.html">環境政策</a></li>
+                  <li><a href="quality.html">品質認證</a></li>
+                  <li><a href="contact.html">聯絡我們</a></li>
+                  <li><a href="subsidiary.html">子公司</a></li>
+                  <li><a href="invest.html">投資人專區</a></li>
+                  <li><a href="stake.html">利害關係人專區</a></li>
+										
+								</ul>
+						</nav>
+		
+				</div> <!-- / row -->
+		
+		</header>
+    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark" style="background-image: url('/cysteel/pic/factory-2993859_960_720.jpg');background-size: cover;">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 font-italic">公司介紹</h1>
+        <p class="lead my-3">本公司成立於民國 63 年，迄今已有 40年的歷史。</p>
+        <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+      </div>
+    </div> 
+
+
+			  <main role="main">
+
+					
+			  
+			  
+					<!-- Marketing messaging and featurettes
+					================================================== -->
+					<!-- Wrap the rest of the page in another container to center all the content. -->
+			  
+					<div class="container marketing pt-5">
+							<hr class="featurette-divider">
+			  
+							<div class="row featurette" id="intro">
+							  <div class="col-md-7">
+								<h2 class="featurette-heading">關於我們 <span class="text-muted">About us</span></h2>
+								<p class="lead">成立於1974年的嘉鋼集團，是主力於鋼鐵鑄造生產的專業團隊。從成立以來，我們即不斷引進各種先進之生產設備，故產能不斷擴充，營運規模不斷擴展，為持續達成卓越生產目標，我們與日本大廠技術合作，導入高階的產業技術。由於經營團隊的穩健經營，及技術與品質不斷的精進，營運規模快速擴展；因應市場的需求，集團於2006年及2008年分別在大陸成立了中佑鑄造(河北唐山廠)有限公司、中佑機械工業有限公司(江蘇太倉廠)來增加產值與產能。歷經了40年的淬鍊，使「嘉鋼集團」成為品質保證的代名詞，專業優質的形象，深植每一個客戶的腦海，獲得高度認同與信賴。</p>
+                              <p class="lead">此外, 嘉義鋼鐵亦于2014跨足金屬粉末之生產, 藉由優異的粉末氣體霧化生產技術提供客戶高純度的球形金屬粉末</p>
+                            </div>
+							  <div class="col-md-5">
+								<img class="featurette-image img-fluid mx-auto pt-5 mt-5" src="/cysteel/pic/steel-2789902_960_720.jpg" alt="Generic placeholder image">
+							
+							</div>
+							</div>
+					
+							<hr class="featurette-divider">
+                            <div class="row featurette" id="intro">
+                                <div class="col-md-12">
+                                  <h2 class="featurette-heading">理念與願景<span class="text-muted"><i class="fa fa-leaf"></i></span></h2>
+                                  <p class="lead"><ul>
+                                      <li>保證品質、尊崇顧客</li>
+                                      <li>培訓人才、健全管理</li>
+                                      <li>重視安衛、勞資和諧</li>
+                                      <li>創新發展、永續經營</li>
+                                  </ul></p>
+                                <p class="lead">　未來，我們將持續以先進的核心技術、獨特而完整的產品線、積極推動產品的開發設計，以提升產品多元化、客戶需求優質化，創造具更高附加價值的產品。期許在鑄鐵加工的領域上，不斷建立競爭優勢，不僅成為產業標竿，更要成為企業永續經營的最佳典範。</p>
+                              </div>
+                              
+                                
+                              </div>
+							
+					
+							<hr class="featurette-divider">
+					
+							<div class="row featurette" id="intro3">
+							  <div class="col-md-7">
+								<h2 class="featurette-heading">教育訓練政策 <span class="text-muted"><i class="fa fa-chalkboard-teacher"></i></span></h2>
+								<p class="lead">持續推動專業職能訓練，促進知識與技術傳承。</p>
+							  </div>
+							  <div class="col-md-5">
+								<img class="featurette-image img-fluid mx-auto" src="/cysteel/pic/pexels-photo-1145434.jpeg" alt="Generic placeholder image">
+							  </div>
+							</div>
+					
+							<hr class="featurette-divider">
+					  <!-- Three columns of text below the carousel -->
+					  <div class="row">
+                            <h2 class="featurette-heading">快速檢視<span class="text-muted"><i class="fa fa-search"></i></span></h2>
+                            <table class="table">
+                                    <thead class="thead-light">
+                                      <tr>
+                                        <th scope="col" colspan="2">基本資料</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody >
+                                      <tr>
+                                        <th scope="row">成立日期</th>
+                                        <td>1974年3月 </td>
+                                        
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">資本額</th>
+                                        <td>NT 368,661,770</td>
+                                        
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">已發行普通股</th>
+                                        <td>36,866,177 股</td>
+                                       
+                                      </tr>
+                                      <tr>
+                                            <th scope="row">土地面積</th>
+                                            <td>19,794 m2 </td>
+                                            
+                                          </tr>
+                                          <tr>
+                                                <th scope="row">廠房面積</th>
+                                                <td>10,357.95 m2 </td>
+                                                
+                                              </tr>
+                                          <tr>
+                                                <th scope="row">員工人數</th>
+                                                <td>442人(至2016年4月)</td>
+                                                
+                                              </tr>
+                                    </tbody>
+                                  </table>
+                                  <table class="table">
+                                        <thead class="thead-light">
+                                                <tr>
+                                                  <th scope="col" colspan="3">市場</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody >
+                                                    <tr>
+                                                      <td>嘉鋼集團產品行銷全球，遍及台灣、中國、日本、美國、巴西、法國、德國、芬蘭、越南等。我們提供最快速直接的服務。與客戶進行密切技術交流、設計改善、完整解說，達成更高銷售服務保證，嘉鋼集團賣的不只是產品，而是一種價值與榮耀。</td>
+                                                    </tr> 
+                                                  </tbody>
+                                  </table>
+                                  <table class="table">
+                                        <thead class="thead-light">
+                                                <tr>
+                                                  <th scope="col" colspan="3">產品</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody >
+                                                    <tr>
+                                                      <td>　嘉鋼集團主要從事生產油壓零件鑄件、汽機車零件鑄件、農業零件鑄件、工程機械零件鑄件、鐵軌鑄件及其他鑄件之生產。可應用於汽、機車、農業機械、工程機械、軌道等零件鑄件設備。現今嘉鋼集團，技術水準優於同業，等同於歐美具承接國際大廠訂單能力，且客戶群為該領域領導廠商，嘉鋼集團生產技術與品質管理受國際級大廠之肯定；且營業額每年亦均穩定的成長。
+
+                                                            　　另一方面, 嘉鋼經由氣體霧化技術所生產的高純度的球形金屬粉末主要運用於3D列印(積層製造), 熱噴塗(Thermal spary), MIM(金屬粉末射出成型),磁性材料…等產業；嘉鋼亦提供客製化成分合金粉末。藉由與客戶共同開發的合作模式,嘉鋼很樂意與客戶建立長期穩定的夥伴關係</td>
+                                                    </tr> 
+                                                  </tbody>
+                                  </table>
+					  </div><!-- /.row -->
+			  
+			  
+					 
+			  
+			  
+					<!-- FOOTER -->
+				<!-- Footer -->
+<footer class="page-footer font-small unique-color-dark" >
+
+  
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5 text-white pt-3"  style="background-color: #57565f;">
+
+    <!-- Grid row -->
+    <div class="row mt-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">嘉鋼精密工業股份有限公司</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>本公司成立於民國 63 年，迄今已有 40年的歷史。民國 86 年 12 月正式取得 ISO 9002 經濟部商品檢驗局之品保制度證書，且於翌年順利取得國外認證機構 DNV 工廠品保制度證書，使本公司產品與製程達到一定的品質水準。</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Products</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="#!"><span class="text-white font-weight-light">油壓零件</span></a>
+        </p>
+        <p>
+          <a href="#!"><span class="text-white font-weight-light">產/農業機械零件</span></a>
+        </p>
+        <p>
+          <a href="#!"><span class="text-white font-weight-light">汽車/其他零件</span></a>
+        </p>
+        <p>
+          <a href="#!"><span class="text-white font-weight-light">氣體霧化金屬粉末</span></a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Site Map</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="intro.html"><span class="text-white font-weight-light">公司介紹</span></a>
+        </p>
+        <p>
+          <a href="equipments.html"><span class="text-white font-weight-light">設備介紹</span></a>
+        </p>
+        <p>
+          <a href="product.html"><span class="text-white font-weight-light">產品介紹</span></a>
+        </p>
+        <p>
+          <a href="contact.html"><span class="text-white font-weight-light">聯絡我們</span></a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <i class="fa fa-home mr-3"></i> 62155 嘉義縣民雄鄉成功二街21號</p>
+        <p>
+          <i class="fa fa-envelope mr-3"></i> sales@mail.cysteel.com.tw</p>
+        <p>
+          <i class="fa fa-phone mr-3"></i> +886-5-2211411</p>
+        <p>
+          <i class="fa fa-print mr-3"></i> +886-5-2218211</p>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3 bg-dark">© 2018 Copyright:
+    <a href="#">cysteel</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+				  </main>
+
+					<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+					<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+					
+					<script>
+					// Sticky Header
+$(window).scroll(function() {
+
+if ($(window).scrollTop() > 100) {
+		$('.main_h').addClass('sticky');
+} else {
+		$('.main_h').removeClass('sticky');
+}
+});
+
+// Mobile Navigation
+$('.mobile-toggle').click(function() {
+if ($('.main_h').hasClass('open-nav')) {
+		$('.main_h').removeClass('open-nav');
+} else {
+		$('.main_h').addClass('open-nav');
+}
+});
+
+$('.main_h li a').click(function() {
+if ($('.main_h').hasClass('open-nav')) {
+		$('.navigation').removeClass('open-nav');
+		$('.main_h').removeClass('open-nav');
+}
+});
+
+// navigation scroll lijepo radi materem
+$('nav a').click(function(event) {
+var id = $(this).attr("href");
+var offset = 70;
+var target = $(id).offset().top - offset;
+$('html, body').animate({
+		scrollTop: target
+}, 500);
+event.preventDefault();
+});
+					</script>
+</body>
+</html>
