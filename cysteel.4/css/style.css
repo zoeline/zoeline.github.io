@@ -31,7 +31,7 @@ Primary style
     z-index: 3;
     height: 50px;
     width: 100%;
-    top: 0;
+    top: 0px;
     left: 0;
     background-color: #619ed7;
     -webkit-font-smoothing: antialiased;
@@ -63,6 +63,7 @@ Primary style
   @media only screen and (min-width: 1024px) {
     header {
       height: 80px;
+      
     }
     header.nav-is-visible {
       -webkit-transform: translateX(0);
