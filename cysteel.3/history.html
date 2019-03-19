@@ -39,6 +39,8 @@
   <link rel="stylesheet" href="/cysteel.2/css/lightbox.min.css"> 
  <link rel="stylesheet" href="/cysteel.3/css/default.css">
  <link rel="stylesheet" href="/cysteel.3/css/component.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/assets/owl.carousel.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/assets/owl.theme.default.min.css"></link>
  <script src="/cysteel.3/js/modernizr-custom.js"></script>
  <style>
  @import url(https://fonts.googleapis.com/css?family=Raleway:400,900);
@@ -50,7 +52,7 @@ body{
 
 header h1{
   text-align: center;
-  font-weight: bold;a
+  font-weight: bold;
   margin-top: 0;
 }
   
@@ -359,6 +361,29 @@ header h1{
     text-align: left;
   }
 }
+.animated  {
+  -webkit-animation-duration : 3s  ;
+  animation-duration : 3s  ;
+
+  -webkit-animation-delay : 500ms  ;
+  animation-delay : 500ms  ;
+}
+
+.animate-out {
+  -webkit-animation-delay : 0ms  ;
+  animation-delay : 0ms  ;
+}
+.owl-item {
+  display: table;
+}
+.owl-carousel1 .item {
+  height: 20vh;
+  background-color: #fc0;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #fff;
+}
  </style>
 </head>       
 <body>
@@ -634,78 +659,30 @@ header h1{
                   </div>
                 </div> 
               
-                <div id="our-clients" class="slider2 flexslider">
-                  <ul class="slides">
-                    <li>
-                      <div class="row">
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="/cysteel.3/images/Award1.JPG" alt="">
-                          </a>
-                        </div>
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="/cysteel.3/images/Award2.JPG" alt="">
-                          </a>
-                        </div>
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="/cysteel.3/images/Award3.JPG" alt="">
-                          </a>
-                        </div>
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="/cysteel.3/images/Award4.JPG" alt="">
-                          </a>
-                        </div>
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="/cysteel.3/images/Award5.JPG" alt="">
-                          </a>
-                        </div>
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="/cysteel.3/images/Award6.JPG" alt="">
-                          </a>
-                        </div>
-                      </div>  
-                    </li>
-                    <li>
-                      <div class="row">
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="/cysteel.3/images/Award1.JPG" alt="">
-                          </a>
-                        </div>
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="img/our-clients/3.png" alt="">
-                          </a>
-                        </div>
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="img/our-clients/1.png" alt="">
-                          </a>
-                        </div>
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="img/our-clients/2.png" alt="">
-                          </a>
-                        </div>
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="img/our-clients/5.png" alt="">
-                          </a>
-                        </div>
-                        <div class="span2">
-                          <a href="#" rel="external">
-                              <img src="img/our-clients/6.png" alt="">
-                          </a>
-                        </div>
-                      </div>  
-                    </li>
-                  </ul>
-                </div> 
+                <!--pic-->
+        <div class="owl-carousel1" >
+          <div class="item" style="background-image: url('/cysteel.3/images/Award1.JPG');background-size: cover;" >
+            <a href="/cysteel.3/images/award/Award1.JPG" data-lightbox="roadtrip"><h2></h2></a>
+          </div>
+          <div class="item" style="background-image: url('/cysteel.3/images/Award2.JPG');background-size: cover;">
+            <a href="/cysteel.3/images/award/Award2.JPG" data-lightbox="roadtrip"><h2></h2></a>
+          </div>
+          <div class="item" style="background-image: url('/cysteel.3/images/Award3.JPG');background-size: cover;">
+            <a href="/cysteel.3/images/award/Award3.JPG" data-lightbox="roadtrip"><h2></h2></a>
+          </div>
+          <div class="item" style="background-image: url('/cysteel.3/images/Award4.JPG');background-size: cover;">
+            <a href="/cysteel.3/images/award/Award4.JPG" data-lightbox="roadtrip"><h2></h2></a>
+          </div>
+          <div class="item" style="background-image: url('/cysteel.3/images/Award5.JPG');background-size: cover;">
+            <a href="/cysteel.3/images/award/Award5.JPG" data-lightbox="roadtrip"><h2></h2></a>
+          </div>
+          <div class="item" style="background-image: url('/cysteel.3/images/Award6.JPG');background-size: cover;">
+            <a href="/cysteel.3/images/award/Award6.JPG" data-lightbox="roadtrip"><h2></h2></a>
+          </div>
+          <div class="item" style="background-image: url('/cysteel.3/images/Award7.JPG');background-size: cover;">
+            <a href="/cysteel.3/images/award/Award7.JPG" data-lightbox="roadtrip"><h2></h2></a>
+          </div>
+        </div> 
                 <!-- Our Clients End -->
                 
                 <div class="space50"></div> 
@@ -803,7 +780,104 @@ header h1{
   <script type="text/javascript" src="/cysteel.2/js/functions.js"></script>
   <script type="text/javascript" defer src="/cysteel.2/js/jquery.flexslider.js"></script>
 <script src="/cysteel.2/js/lightbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/owl.carousel.min.js"></script>
+<script>
+$(document).ready(function (){
+  // Declare Carousel jquery object
+  var owl = $('.owl-carousel');
 
+  // Carousel initialization
+  owl.owlCarousel({
+      loop:false,
+      margin:0,
+      navSpeed:500,
+      nav:true,
+      autoplay: true,
+      rewind: true,
+      items:1
+  });
+
+
+  // add animate.css class(es) to the elements to be animated
+  function setAnimation ( _elem, _InOut ) {
+    // Store all animationend event name in a string.
+    // cf animate.css documentation
+    var animationEndEvent = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+    _elem.each ( function () {
+      var $elem = $(this);
+      var $animationType = 'animated ' + $elem.data( 'animation-' + _InOut );
+
+      $elem.addClass($animationType).one(animationEndEvent, function () {
+        $elem.removeClass($animationType); // remove animate.css Class at the end of the animations
+      });
+    });
+  }
+
+// Fired before current slide change
+  owl.on('change.owl.carousel', function(event) {
+      var $currentItem = $('.owl-item', owl).eq(event.item.index);
+      var $elemsToanim = $currentItem.find("[data-animation-out]");
+      setAnimation ($elemsToanim, 'out');
+  });
+
+// Fired after current slide has been changed
+  var round = 0;
+  owl.on('changed.owl.carousel', function(event) {
+
+      var $currentItem = $('.owl-item', owl).eq(event.item.index);
+      var $elemsToanim = $currentItem.find("[data-animation-in]");
+    
+      setAnimation ($elemsToanim, 'in');
+  })
+  
+  owl.on('translated.owl.carousel', function(event) {
+    console.log (event.item.index, event.page.count);
+    
+      if (event.item.index == (event.page.count - 1))  {
+        if (round < 1) {
+          round++
+          console.log (round);
+        } else {
+          owl.trigger('stop.owl.autoplay');
+          var owlData = owl.data('owl.carousel');
+          owlData.settings.autoplay = false; //don't know if both are necessary
+          owlData.options.autoplay = false;
+          owl.trigger('refresh.owl.carousel');
+        }
+      }
+  });
+
+});
+</script>
+<script>
+    var owl = $('.owl-carousel1');
+    owl.owlCarousel({
+      autoplay: true,
+      margin: 10,
+      dots:false,
+      loop: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 7
+        }
+      }
+    })
+  </script>
+  <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'disableScrolling':true,
+      'showImageNumberLabel':false;
+    })
+</script>
 
 </body>
 </html>
