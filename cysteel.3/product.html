@@ -40,7 +40,73 @@
  <link rel="stylesheet" href="/cysteel.3/css/default.css">
  <link rel="stylesheet" href="/cysteel.3/css/component.css">
  <script src="/cysteel.3/js/modernizr-custom.js"></script>
- 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/assets/owl.carousel.min.css"></link>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/assets/owl.theme.default.min.css"></link>
+ <style>
+  /* CSS FOR DEMO ONLY */
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .animated  {
+    -webkit-animation-duration : 3s  ;
+    animation-duration : 3s  ;
+  
+    -webkit-animation-delay : 500ms  ;
+    animation-delay : 500ms  ;
+  }
+  
+  .animate-out {
+    -webkit-animation-delay : 0ms  ;
+    animation-delay : 0ms  ;
+  }
+  header{
+    margin-top: 125px;
+    overflow: hidden;
+  }
+  
+  h4 {
+    font-size: 28px;
+  }
+  
+  p {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto 20px;
+  }
+  
+  .owl-item {
+    display: table;
+  }
+  
+  .owl-carousel .item {
+    height: 60vh;
+    background-color: #fc0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .btn {
+    display: inline-block;
+    line-height: 35px;
+    height: 35px;
+    text-align: center;
+    padding: 0 20px;
+    width: auto;
+    background-color: #619ed7;
+    text-decoration: none;
+    color: #fff;
+  }
+  .owl-carousel1 .item {
+    height: 20vh;
+    background-color: #fc0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+  }
+  </style>
 </head>       
 <body>
   <!-- Header -->
@@ -90,7 +156,7 @@
     	    	    <img src="/cysteel.2/pic/slider1.jpg" alt="">
               </li>
               
-                    </li>
+                    
 
                
             </ul>
@@ -115,8 +181,28 @@
                         <!-- Service Title --> 
                         <div class="title-1"><h4>HYDRAULIC </h4></div>
                         <!-- Service Content --> 
-                        <div class="text-1"> 
-                          <img src="/cysteel.3/images/hydraulic.jpg" height="20vh">
+                        <div class="text-1" height="20vh" overflow="hidden"> 
+                          <div class="slider1 flexslider">  <!-- Slider -->
+                            <ul class="slides">
+                              
+                              <li>
+                                <img src="/cysteel.3/images/hydraulic.jpg" alt="">
+                              </li>
+                              
+                              <li>
+                                <img src="/cysteel.3/images/Hydraulic/IMG_3113.JPG" alt="" height="20vh" >
+                              </li>
+                                
+                              <li>
+                                <img src="/cysteel.3/images/Hydraulic/IMG_3116.JPG" alt="" height="20vh" >
+                              </li>    
+                              <li>
+                                <img src="/cysteel.3/images/Hydraulic/IMG_3119.JPG" alt="" height="20vh" >
+                              </li>  
+                               
+                            </ul>
+                          </div> 
+                          
                         </div>
                       </div>
                       <!-- Service Container End --> 
@@ -124,7 +210,38 @@
                         <div class="ic-1"><i class="icon-resize-full"></i></div>
                         <div class="title-1"><h4>AGRICULTURAL </h4></div>
                         <div class="text-1">         
-                          <img src="/cysteel.3/images/agricultural.jpg" height="20vh">
+                          
+                          <div class="slider1 flexslider" height="20vh">  <!-- Slider -->
+                            <ul class="slides">
+                              
+                              <li>
+                                <img src="/cysteel.3/images/agricultural.jpg" alt="">
+                              </li>
+                              
+                              <li>
+                                <img src="/cysteel.3/images/Agricultural/IMG_3120.JPG" alt="" height="20vh" >
+                              </li>
+                                
+                              <li>
+                                <img src="/cysteel.3/images/Agricultural/IMG_3125.JPG" alt="" height="20vh" >
+                              </li>    
+                              <li>
+                                <img src="/cysteel.3/images/Agricultural/IMG_3129.JPG" alt="" height="20vh" >
+                              </li>  
+                              <li>
+                                <img src="/cysteel.3/images/Agricultural/IMG_3160.JPG" alt="" height="20vh" >
+                              </li>
+                              <li>
+                                <img src="/cysteel.3/images/Agricultural/IMG_3163.JPG" alt="" height="20vh" >
+                              </li>
+                              <li>
+                                <img src="/cysteel.3/images/Agricultural/IMG_3168.JPG" alt="" height="20vh" >
+                              </li>
+                              <li>
+                                <img src="/cysteel.3/images/Agricultural//IMG_3173.JPG" alt="" height="20vh" >
+                              </li>
+                            </ul>
+                          </div> 
                         </div>
                       </div>
                       <div class="span3">
@@ -279,7 +396,96 @@
   <script type="text/javascript" defer src="/cysteel.2/js/jquery.flexslider.js"></script>
 <script src="/cysteel.2/js/lightbox.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/owl.carousel.min.js"></script>
+<script>
+$(document).ready(function (){
+  // Declare Carousel jquery object
+  var owl = $('.owl-carousel');
 
+  // Carousel initialization
+  owl.owlCarousel({
+      loop:false,
+      margin:0,
+      navSpeed:500,
+      nav:true,
+      autoplay: true,
+      rewind: true,
+      items:1
+  });
+
+
+  // add animate.css class(es) to the elements to be animated
+  function setAnimation ( _elem, _InOut ) {
+    // Store all animationend event name in a string.
+    // cf animate.css documentation
+    var animationEndEvent = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+    _elem.each ( function () {
+      var $elem = $(this);
+      var $animationType = 'animated ' + $elem.data( 'animation-' + _InOut );
+
+      $elem.addClass($animationType).one(animationEndEvent, function () {
+        $elem.removeClass($animationType); // remove animate.css Class at the end of the animations
+      });
+    });
+  }
+
+// Fired before current slide change
+  owl.on('change.owl.carousel', function(event) {
+      var $currentItem = $('.owl-item', owl).eq(event.item.index);
+      var $elemsToanim = $currentItem.find("[data-animation-out]");
+      setAnimation ($elemsToanim, 'out');
+  });
+
+// Fired after current slide has been changed
+  var round = 0;
+  owl.on('changed.owl.carousel', function(event) {
+
+      var $currentItem = $('.owl-item', owl).eq(event.item.index);
+      var $elemsToanim = $currentItem.find("[data-animation-in]");
+    
+      setAnimation ($elemsToanim, 'in');
+  })
+  
+  owl.on('translated.owl.carousel', function(event) {
+    console.log (event.item.index, event.page.count);
+    
+      if (event.item.index == (event.page.count - 1))  {
+        if (round < 1) {
+          round++
+          console.log (round);
+        } else {
+          owl.trigger('stop.owl.autoplay');
+          var owlData = owl.data('owl.carousel');
+          owlData.settings.autoplay = false; //don't know if both are necessary
+          owlData.options.autoplay = false;
+          owl.trigger('refresh.owl.carousel');
+        }
+      }
+  });
+
+});
+</script>
+<script>
+    var owl = $('.owl-carousel1');
+    owl.owlCarousel({
+      margin: 10,
+      dots:false,
+      loop: true,
+      autoplay: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 1
+        },
+        1000: {
+          items: 1
+        }
+      }
+    })
+  </script>
 </body>
 </html>
   
