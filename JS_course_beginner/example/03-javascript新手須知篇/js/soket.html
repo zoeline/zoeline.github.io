@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    
+      // Create a client instance
+     // client = new Paho.MQTT.Client("host", port,"client_id"); (自己打)-cloudmqtt.com
+       client = new Paho.MQTT.Client("m16.cloudmqtt.com", 30939, "web_" + parseInt(Math.random() * 100, 10));
+    
+      // set callback handlers
+      client.onConnectionLost = onConnectionLost;
+      client.onMessageArrived = onMessageArrived;
+      var options = {
+        useSSL: true,
+        userName: "gfclycwo",
+        password: "Gml3krUbGRtN",
+        onSuccess:onConnect,
+        onFailure:doFail
+      }
+    
+      // connect the client
+      client.connect(options);
+    
+      // called when the client connects
+      function onConnect() {
+        // Once a connection has been made, make a subscription and send a message.
+        console.log("onConnect");
+        client.subscribe("/cloudmqtt");
+        message = new Paho.MQTT.Message("Hello CloudMQTT");
+        message.destinationName = "/cloudmqtt";
+        client.send(message);
+      }
+    
+      function doFail(e){
+        console.log(e);
+      }
+    
+      // called when the client loses its connection
+      function onConnectionLost(responseObject) {
+        if (responseObject.errorCode !== 0) {
+          console.log("onConnectionLost:"+responseObject.errorMessage);
+        }
+      }
+    
+      // called when a message arrives
+      function onMessageArrived(message) {
+        console.log("onMessageArrived:"+message.payloadString);
+        document.getElementById("label").innerHTML = message.payloadString;
+      }
+
+      function send(){
+          var msg = document.getElementById("message").value;
+          message = new Paho.MQTT.Message(msg);
+          message.destinationName = "/cloudmqtt";
+          client.send(message);
+              }
+
+              
+    </script>
+<script>
+  //ajax迴圈 設定多久問一次server有無新資料  
+//websoket即時通訊 另外開一條網路通道不走https  但須要架兩個server(google filebase(大陸不能用)/)
+
+</script>
+</head>
+<body>
+    <input type="text"><button onclick="send()">送出</button>
+     <div id="label"></div>
+
+
+</body>
+</html>

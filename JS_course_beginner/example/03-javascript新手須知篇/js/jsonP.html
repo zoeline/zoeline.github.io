@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Document</title>
+    <script>
+    function fff(jsonObj){
+        //console.log(jsonObj);
+       //d=new Date()
+       //d.gethours()
+        var tbody = document.getElementById("tbody");
+        jsonObj.forEach(function (p) {
+            
+            var row = tbody.insertRow();
+
+            var county = row.insertCell();
+            county.innerHTML = p["County"];
+
+            var siteName = row.insertCell();
+            siteName.innerHTML = p["SiteName"];
+
+            var AQI = row.insertCell();
+            AQI.innerHTML = p["AQI"];
+        });
+    }
+    </script>
+</head>
+
+<body>
+    <script src="https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json&callback=fff"></script>
+    <table border="1">
+    <thead>
+    <tr>
+    <th>County</th>
+    <th>Sitename</th>
+    <th>AQI</th>
+    </tr>
+</thead>
+<tbody id="tbody"></tbody>
+    </table>
+    
+    
+</body>
+</html>

@@ -1,4 +1,4 @@
-/* --------------------------------------------------------	*/
+﻿/* --------------------------------------------------------	*/
 /*	Twitter Bootstrap */
 /*	Responsive media queries */
 /*	freshdesignweb.com */
@@ -16,6 +16,10 @@
 :focus { outline-color: transparent!important; outline-style: none!important; }
 
 html {
+	 -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+	border:0px;
 	overflow-y:scroll;
 	background:#fff;	
 }
@@ -33,6 +37,31 @@ body {
   background:#fff;
 }
 
+
+.gotop{
+background-image:url('https://upload.wikimedia.org/wikipedia/commons/b/bc/Blue_Glass_Arrow-top.svg');
+background-size:cover;
+position: fixed;
+float:right;
+bottom: 5px; /* 與下方的距離, 也可改為百分比, 即為距離螢幕下方的百分比 */
+right: 5px; /* 與右方的距離 */
+width: 40px; /* 按鈕原始寬度 */
+height: 40px; /* 按鈕原始高度 */
+opacity: 0.4; /* 按鈕原始透明度 */
+z-index: 10;
+cursor: pointer;
+transition: all .5s; /* 動畫效果 持續期間 */
+-webkit-transition: all .5s;
+-moz-transition: all .5s;
+}
+.gotop:hover { /* 滑鼠經過按鈕時 */
+opacity: 1; /* 透明度 */
+width: 80px; /* 按鈕寬度 */
+height: 80px; /* 按鈕高度 */
+}
+.gotop img{
+display:none;
+}
 h1, h2, h3, h4, h5, h6 {
   position:relative;
   font-family: 'Titillium Web', sans-serif; 

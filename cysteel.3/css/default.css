@@ -149,19 +149,19 @@ a:hover {
 }
 
 .bp-icon-next:after {
-	content: "\e000";
+	content: "En";
 }
 .bp-icon-drop:after {
-	content: "\e001";
+	content: "\1F6E0";
 }
 .bp-icon-archive:after {
-	content: "\e002";
+	content: "\2709";
 }
 .bp-icon-about:after {
 	content: "\e003";
 }
 .bp-icon-prev:after {
-	content: "\e004";
+	content: "Ch";
 }
 
 @media screen and (max-width: 55em) {

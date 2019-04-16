@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    //==============================================================================
+// PEN
+//==============================================================================
+// Places the pen in the specified location without drawing a line. If the pen
+// subsequently moves, a line will be drawn.
+function penDown (x, y) {
+  isPenDown = true;
+  localPen.x = x;
+  localPen.y = y;
+  
+  // Send this user's new pen position to other users.
+  broadcastMove(x, y);
+  
+  // Begin sending this user's drawing path to other users every 500 milliseconds.
+  broadcastPathIntervalID = setInterval(broadcastPath, 500);
+}
+
+// Draws a line if the pen is down.
+function penMove (x, y) { 
+  if (isPenDown) {
+    // Buffer the new position for broadcast to other users. Buffer a maximum
+    // of 100 points per second.
+    if ((new Date().getTime() - lastBufferTime) > 10) {
+      bufferedPath.push(x + "," + y);
+      lastBufferTime = new Date().getTime();
+    }
+    
+    // Draw the line locally.
+    drawLine(localLineColor, localLineThickness, localPen.x, localPen.y, x, y);
+    
+    // Move the pen to the end of the line that was just drawn.
+    localPen.x = x;
+    localPen.y = y;
+  }
+}
+
+// "Lifts" the drawing pen, so that lines are no longer draw when the mouse or
+// touch-input device moves.
+function penUp () {
+  isPenDown = false;
+}
+
+    //==============================================================================
+// A flag to track whether the user is drawing or not
+var isPenDown = false;
+
+// Line defaults
+var defaultLineColor = "#000000";
+var defaultLineThickness = 1;
+var maxLineThickness = 10;
+
+// Tracks the current location of the user's drawing pen
+var localPen = {};
+
+// The user's line styles 
+var localLineColor = defaultLineColor;
+var localLineThickness = defaultLineThickness;
+
+// A list of points in a path to send to other connected users
+var bufferedPath = [];
+// A timestamp indicating the last time a point was added to the bufferedPath
+var lastBufferTime = new Date().getTime();
+//==============================================================================
+// DRAWING VARIABLES
+//==============================================================================
+// The HTML5 drawing canvas
+var canvas;
+// The drawing canvas's context, through which drawing commands are performed
+var context;
+// A hash of drawing commands executed by UnionDraw's rendering process
+var DrawingCommands = {LINE_TO:       "lineTo",
+                       MOVE_TO:       "moveTo",
+                       SET_THICKNESS: "setThickness",
+                       SET_COLOR:     "setColor"};
+                // Register callback functions to handle user input
+function registerInputListeners () {
+  canvas.onmousedown = pointerDownListener;
+  document.onmousemove = pointerMoveListener;
+  document.onmouseup = pointerUpListener;
+  document.ontouchstart = touchDownListener;
+  document.ontouchmove = touchMoveListener;
+  document.ontouchend = touchUpListener;
+  document.getElementById("thickness").onchange = thicknessSelectListener;
+  document.getElementById("color").onchange = colorSelectListener;
+}
+ 
+
+
+  
+        var canvas;
+        var ctx;
+    
+     window.onload = function(){
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                ctx.strokeStyle = getElementById("color").value;
+                ctx.fillStyle = getElementById("thickness").value;
+
+                canvas.onmousemove = function(event){
+                    console.log(event);
+                    pan(event);
+                };
+            }
+            
+            DRAWING
+//==============================================================================
+// Draws a line on the HTML5 canvas
+function drawLine (color, thickness, x1, y1, x2, y2) {
+  context.strokeStyle = color;
+  context.lineWidth   = thickness;
+  
+  context.beginPath();
+  context.moveTo(x1, y1)
+  context.lineTo(x2, y2);
+  context.stroke();
+}
+
+//==============================================================================
+// STATUS
+//==============================================================================
+// Updates the text of the on-screen HTML "status" div tag
+
+    
+    </script>
+<body>
+    <h4>pick color</h4><input type="color" id="color" >
+    <h4>set linetHeight</h4><input type="range" min="1" max="10" id="thickness">
+    <p>
+    <canvas id="canvas" style="background-color:khaki;"></canvas>
+    <div id="status"></div>
+
+</body>
+</html>

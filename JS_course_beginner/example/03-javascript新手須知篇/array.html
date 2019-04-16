@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //陣列
+        var zoo = ["獅子", "老虎", "長頸鹿", "海豚"];
+        //陣列所引起始 0
+        console.log(zoo[2]);
+        zoo[0] = "石虎";
+        console.log(zoo);
+        //陣列越界
+        //console.log(zoo[4]);
+
+        //列出陣列元素
+        for (i = 0;i < zoo.length; i++){
+            console.log("動物園有" +zoo[i]) ;
+                }
+        
+        for (i in zoo){
+            console.log("動物園有" +zoo[i]) ;
+                }      
+        zoo.forEach(function(p) {
+            console.log("動物園有" + p) ;
+        });
+        //從尾端+元素
+        zoo.push("鯊魚", "老鷹");
+        console.log(zoo) ;
+        //從頭+
+        zoo.unshift("鯊魚", "老鷹");
+        console.log(zoo) ;
+        //從尾端-
+        zoo.pop();
+        console.log(zoo) ;
+        //從頭-
+        zoo.shift();
+        console.log(zoo) ;
+
+        //搜尋陣列
+        console.log(zoo.indexOf("老虎"));
+
+        //順向排序
+        arr = [1,4,9,8,5,6,3];
+        console.log(arr.sort());
+        //陣列反向
+        console.log(arr.reverse());
+
+        //0-1隨機亂數
+        Math.random();
+
+        //lotto
+        var lo = [];
+        for (i = 1;i < 47;i++){
+            lo.push(i);
+        }
+        console.log(lo);
+        var x;
+        for(i = 0;i < 7;i++){
+            var r = Math.random()*lo.length;
+            var n =lo[r];
+            if (lo[x] == n) {
+            lo.splice(x, 1);
+            console.log("本期中獎號碼"+ n);
+        }
+            
+        }
+
+        
+        </script>
+</body>
+</html>
