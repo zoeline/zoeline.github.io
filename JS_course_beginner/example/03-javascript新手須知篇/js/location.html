@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    function href(){
+//location.href = "https://www.google.com"
+console.log("href: " + location.href);
+console.log("hostname: " + location.hostname);
+}
+function window_open(){
+    //_self:自己
+    //_blank:開心頁簽
+    //_top _parent 不常用
+    var ww = screen.availWidth;
+    var hh = screen.availHeight;
+
+    w = window.open("https://www.google.com" , "_blank" , "width=" + ww + ",height="+ hh + "");
+}
+function window_close(){
+    w.close();
+}
+</script>
+<body>
+    <button onclick="href()">LOCATION</button>
+    <button onclick="scn()"></button>
+    <button onclick="wnd()"></button>
+    <button onclick="fullscreen()"></button>
+    <button onclick="window_open()"></button>
+    <button onclick="window_close()"></button>
+</body>
+</html>

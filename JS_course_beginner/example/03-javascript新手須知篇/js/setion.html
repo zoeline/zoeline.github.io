@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    function mysubmit(){
+        console.log("hello");
+var x = document.getElementById("x").value;
+var y = document.getElementById("y").value;
+
+if((x == "")||(y == "")){
+    alert("請輸入正確的數字");
+    return fales;
+}
+else{
+    document.myform.submit();
+}
+}
+</script>
+<body>
+    <form name="myform" action="http://10.0.101.173/add.php" method="post" onsubmit="return mysubmit()">
+    第一個值: <input name="x"><p>
+            第二個值: <input name="y"><p> 
+               
+                <div onclick="mysubmit()" style="cursor:pointer;">SEND</div>
+    </form>
+</body>
+</html>

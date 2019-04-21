@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    //
+function setCookie(){
+    var d = new Date;
+    d.setTime(d.getTime() + 5 * 60 * 60 * 1000); //5hr,沒設有效期則不會存檔只會在記憶體重開瀏覽器就不見
+    document.cookie = "username=Liu Zona; expires=" + d.toGMTString();
+
+    var d = new Date;
+    d.setTime(d.getTime() + 2 * 24 * 60 * 60 * 1000); //2DAYS,沒設有效期則不會存檔只會在記憶體重開瀏覽器就不見
+    document.cookie = "pwd=1234; expires=" + d.toGMTString();
+}
+function getCookie(){
+    var cookie = document.cookie;
+    console.log(cookie);
+}
+    
+</script>
+<body>
+    
+</body>
+</html>

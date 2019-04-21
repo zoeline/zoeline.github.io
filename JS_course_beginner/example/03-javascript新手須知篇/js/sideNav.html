@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+#menu{
+    position:absolute;
+    display: inline-block;
+    left:-200px;
+    top:0;
+    width:200px;
+    height:100%;
+    background-color: aqua;
+}
+#handle{
+    position:absolute;
+    display: inline-block;
+    left:0px;
+    top:50%;
+    cursor:context-menu;
+}
+#menu img{
+    display: block;
+    border-radius: 10px;
+    margin-top:14px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+</style>
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.4.0.min.js"
+  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+  crossorigin="anonymous"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+<script>
+var $handle;
+var $menu;
+$(function(){
+    $handle = $("#handle");
+    $menu = $("#menu");
+
+    $handle.mousedown(function(){
+        $(document).on("mousemove" , myMouseMove);
+    });
+    $(document).on("mouseup" , myMouseUp);
+    $("#menu img").click(function(){
+        $("image").attr("src", $(this).attr("src"));
+        menu_is_open(fales);
+    });
+});
+
+</script>
+<body>
+    <div id="handle">★</div>
+    <div id="menu">
+        <img src="/cysteel.1/pic/factory-2993859_960_720.jpg" alt="">
+        <img src="/cysteel.1/pic/steel-1968194_960_720.jpg" alt="">
+        <img src="/cysteel.1/pic/company-3127555_960_720.jpg" alt="">
+    </div>
+    <img src="" alt="">
+</body>
+</html>
