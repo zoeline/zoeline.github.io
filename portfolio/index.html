@@ -6,6 +6,7 @@
   <title>Design Alchemist — Acid Portfolio</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Microbe&amp;family=Space+Mono:wght@400;700&amp;family=Poppins:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
   <style>
@@ -533,12 +534,12 @@ body {
   <script>
 // ===== DATA =====
 const portfolioItems = [
-  { id: 1, title: "Arcane Brand Identity", desc: "Complete brand system for a mystical tech startup", category: "branding", color: "#FF007F", image: "https://your-image-url.com/project1.jpg"   },
-  { id: 2, title: "Potion Lab App", desc: "Mobile UI/UX for a wellness application", category: "uiux", color: "#B000FF" },
-  { id: 3, title: "Enchanted Illustrations", desc: "Series of digital illustrations for editorial", category: "illustration", color: "#39FF14" },
-  { id: 4, title: "Crystal Motion", desc: "Motion graphics for product launch", category: "motion", color: "#FF6600" },
-  { id: 5, title: "Spellbound E-Commerce", desc: "UI/UX design for luxury fashion brand", category: "uiux", color: "#FF007F" },
-  { id: 6, title: "Rune Typography", desc: "Custom typeface and brand identity system", category: "branding", color: "#B000FF" },
+  { id: 1, title: "Arcane Brand Identity", desc: "Complete brand system for a mystical tech startup", category: "branding", color: "#FF007F", image: "https://via.placeholder.com/1200x800?text=Project+1" },
+  { id: 2, title: "Potion Lab App", desc: "Mobile UI/UX for a wellness application", category: "uiux", color: "#B000FF", image: "https://via.placeholder.com/1200x800?text=Project+2" },
+  { id: 3, title: "Enchanted Illustrations", desc: "Series of digital illustrations for editorial", category: "illustration", color: "#39FF14", image: "https://via.placeholder.com/1200x800?text=Project+3" },
+  { id: 4, title: "Crystal Motion", desc: "Motion graphics for product launch", category: "motion", color: "#FF6600", image: "https://via.placeholder.com/1200x800?text=Project+4" },
+  { id: 5, title: "Spellbound E-Commerce", desc: "UI/UX design for luxury fashion brand", category: "uiux", color: "#FF007F", image: "https://via.placeholder.com/1200x800?text=Project+5" },
+  { id: 6, title: "Rune Typography", desc: "Custom typeface and brand identity system", category: "branding", color: "#B000FF", image: "https://via.placeholder.com/1200x800?text=Project+6" },
 ];
 
 const services = [
@@ -561,10 +562,10 @@ function renderPortfolio(filter = 'all') {
     card.style.transitionDelay = `${idx * 0.1}s`;
     card.innerHTML = `
       <div class="relative" style="height:220px; background: linear-gradient(135deg, ${item.color}15, ${item.color}08); display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <div style="text-align:center;">
+        <img src="${item.image}" alt="${item.title}" loading="lazy" style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;" onerror="this.style.display='none'; this.parentElement.querySelector('.placeholder').style.display='flex';" />
+        <div class="placeholder" style="position:absolute; top:0; left:0; width:100%; height:100%; display:none; align-items:center; justify-content:center; flex-direction:column; background: linear-gradient(135deg, ${item.color}15, ${item.color}08);">
           <div style="font-size:48px; margin-bottom:8px;">🎨</div>
           <p style="font-family:'Space Mono',monospace; font-size:9px; color:var(--metal-silver); letter-spacing:2px;">IMAGE PLACEHOLDER</p>
-          <p style="font-size:8px; color:rgba(255,255,255,0.2);">1200 × 800px</p>
         </div>
         <div style="position:absolute; top:12px; right:12px; padding:4px 10px; border-radius:20px; background:${item.color}25; border:1px solid ${item.color}50;">
           <span style="font-family:'Space Mono',monospace; font-size:9px; color:${item.color}; text-transform:uppercase; letter-spacing:1px;">${item.category}</span>
@@ -608,11 +609,8 @@ function renderServices() {
 function openModal(item) {
   const modal = document.getElementById('portfolioModal');
   document.getElementById('modalContent').innerHTML = `
-    <div style="height:250px; background: linear-gradient(135deg, ${item.color}15, ${item.color}08); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
-      <div style="text-align:center;">
-        <div style="font-size:64px;">🎨</div>
-        <p style="font-family:'Space Mono',monospace; font-size:10px; color:var(--metal-silver); letter-spacing:2px; margin-top:8px;">PROJECT IMAGE</p>
-      </div>
+    <div style="height:250px; background: linear-gradient(135deg, ${item.color}15, ${item.color}08); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; overflow:hidden;">
+      <img src="${item.image}" alt="${item.title}" loading="lazy" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\"text-align:center;\"><div style=\"font-size:64px;\">🎨</div><p style=\"font-family:Space Mono,monospace; font-size:10px; color:var(--metal-silver); letter-spacing:2px; margin-top:8px;\">PROJECT IMAGE</p></div>';" />
     </div>
     <h3 class="text-2xl font-bold mb-3" style="font-family:'Poppins',sans-serif; color:var(--text-primary);">${item.title}</h3>
     <span style="display:inline-block; padding:4px 12px; border-radius:20px; background:${item.color}20; border:1px solid ${item.color}50; font-family:'Space Mono',monospace; font-size:10px; color:${item.color}; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;">${item.category}</span>
@@ -675,11 +673,40 @@ document.querySelectorAll('a, button, .glass-card').forEach(el => {
 });
 
 // ===== FORM =====
-document.getElementById('contactForm').addEventListener('submit', (e) => {
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-  document.getElementById('contactForm').classList.add('hidden');
-  document.getElementById('formSuccess').classList.remove('hidden');
-  document.getElementById('formSuccess').style.display = 'block';
+  
+  const submitBtn = document.querySelector('#contactForm button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<span id="submitBtnText">Sending...</span>';
+  
+  const name = document.getElementById('nameInput').value;
+  const email = document.getElementById('emailInput').value;
+  const message = document.getElementById('msgInput').value;
+  
+  try {
+    // Initialize Email.js
+    emailjs.init('8aUOTXM_7JzXFqZ9W');
+    
+    // Send email
+    await emailjs.send('service_14grmf3', 'template_lb6srdq', {
+      from_name: name,
+      from_email: email,
+      message: message,
+      to_email: 'your-email@example.com'
+    });
+    
+    // Success
+    document.getElementById('contactForm').classList.add('hidden');
+    document.getElementById('formSuccess').classList.remove('hidden');
+    document.getElementById('formSuccess').style.display = 'block';
+  } catch (error) {
+    console.error('Email error:', error);
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalText;
+    alert('Error sending message. Please try again.');
+  }
 });
 
 // ===== BACK TO TOP =====
@@ -791,5 +818,5 @@ setTimeout(() => {
   lucide.createIcons();
 }, 2300);
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ed73553b10bb445',t:'MTc3NjM4NDY0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ed988871656b445',t:'MTc3NjQwOTAyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
