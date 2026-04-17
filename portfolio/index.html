@@ -6,7 +6,6 @@
   <title>Design Alchemist — Acid Portfolio</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Microbe&amp;family=Space+Mono:wght@400;700&amp;family=Poppins:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
   <style>
@@ -302,13 +301,15 @@ body {
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full">
-  <div id="app-wrapper" class="w-full h-full overflow-auto bg-flow op-art-bg" style="background-color: var(--bg);"><!-- Noise overlay -->
+  <div id="app-wrapper" class="w-full h-full overflow-auto bg-flow op-art-bg" style="background-color: var(--bg);">
+   <!-- Noise overlay -->
    <div class="noise-overlay"></div><!-- Custom Cursor -->
    <div class="custom-cursor" id="cursor"></div>
    <div class="cursor-trail" id="cursorTrail"></div><!-- Loading Screen -->
    <div class="loader-screen" id="loader">
     <div style="position:relative; width:120px; height:120px;">
-     <svg class="staff-spin" width="120" height="120" viewbox="0 0 120 120" style="position:absolute; top:0; left:0;"><circle cx="60" cy="60" r="50" fill="none" stroke="url(#loaderGrad)" stroke-width="2" stroke-dasharray="10 5" /> <defs>
+     <svg class="staff-spin" width="120" height="120" viewbox="0 0 120 120" style="position:absolute; top:0; left:0;">
+      <circle cx="60" cy="60" r="50" fill="none" stroke="url(#loaderGrad)" stroke-width="2" stroke-dasharray="10 5" /> <defs>
        <lineargradient id="loaderGrad">
         <stop offset="0%" stop-color="#FF007F" />
         <stop offset="100%" stop-color="#B000FF" />
@@ -331,30 +332,37 @@ body {
     <p style="margin-top:30px; font-family:'Space Mono',monospace; color:#B000FF; letter-spacing:4px; font-size:12px;">CONJURING...</p>
    </div><!-- Navigation -->
    <nav class="nav-glass fixed top-0 left-0 w-full z-[10000] px-6 py-4" id="mainNav">
-    <div class="max-w-7xl mx-auto flex items-center justify-between"><a href="#hero" class="text-xl font-bold" style="font-family:'Rubik Microbe',cursive; color: var(--neon-pink);" id="navLogo">DA</a>
-     <div class="hidden md:flex gap-8 items-center"><a href="#about" class="nav-link text-sm font-semibold tracking-widest uppercase transition-colors hover:text-[#FF007F]" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">About</a> <a href="#portfolio" class="nav-link text-sm font-semibold tracking-widest uppercase transition-colors hover:text-[#FF007F]" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Work</a> <a href="#services" class="nav-link text-sm font-semibold tracking-widest uppercase transition-colors hover:text-[#FF007F]" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Services</a> <a href="#contact" class="neon-btn text-xs" style="padding:10px 24px;">Contact</a>
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+     <a href="#hero" class="text-xl font-bold" style="font-family:'Rubik Microbe',cursive; color: var(--neon-pink);" id="navLogo">DA</a>
+     <div class="hidden md:flex gap-8 items-center">
+      <a href="#about" class="nav-link text-sm font-semibold tracking-widest uppercase transition-colors hover:text-[#FF007F]" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">About</a> <a href="#portfolio" class="nav-link text-sm font-semibold tracking-widest uppercase transition-colors hover:text-[#FF007F]" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Work</a> <a href="#services" class="nav-link text-sm font-semibold tracking-widest uppercase transition-colors hover:text-[#FF007F]" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Services</a> <a href="#contact" class="neon-btn text-xs" style="padding:10px 24px;">Contact</a>
      </div><button id="mobileMenuBtn" class="md:hidden" style="color:var(--neon-pink);"> <i data-lucide="menu" style="width:28px;height:28px;"></i> </button>
     </div><!-- Mobile menu -->
-    <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 mt-4 pb-4"><a href="#about" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">About</a> <a href="#portfolio" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Work</a> <a href="#services" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Services</a> <a href="#contact" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--neon-pink);">Contact</a>
+    <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 mt-4 pb-4">
+     <a href="#about" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">About</a> <a href="#portfolio" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Work</a> <a href="#services" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Services</a> <a href="#contact" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--neon-pink);">Contact</a>
     </div>
    </nav><!-- ==================== HERO SECTION ==================== -->
-   <section id="hero" class="relative w-full flex items-center justify-center overflow-hidden" style="min-height: 100%; padding: 120px 24px 80px;"><!-- Floating particles -->
+   <section id="hero" class="relative w-full flex items-center justify-center overflow-hidden" style="min-height: 100%; padding: 120px 24px 80px;">
+    <!-- Floating particles -->
     <div class="hero-particle" style="top:15%;left:10%;width:6px;height:6px;background:#FF007F;animation-delay:0s;box-shadow:0 0 10px #FF007F;"></div>
     <div class="hero-particle" style="top:25%;right:15%;width:4px;height:4px;background:#39FF14;animation-delay:-2s;box-shadow:0 0 10px #39FF14;"></div>
     <div class="hero-particle" style="top:60%;left:20%;width:5px;height:5px;background:#B000FF;animation-delay:-4s;box-shadow:0 0 10px #B000FF;"></div>
     <div class="hero-particle" style="bottom:20%;right:25%;width:7px;height:7px;background:#FF6600;animation-delay:-1s;box-shadow:0 0 10px #FF6600;"></div>
     <div class="hero-particle" style="top:40%;left:70%;width:3px;height:3px;background:#C0C0C0;animation-delay:-3s;box-shadow:0 0 10px #C0C0C0;"></div>
-    <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-20"><!-- Text content -->
+    <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+     <!-- Text content -->
      <div class="flex-1 text-center lg:text-left z-10">
       <p class="text-xs tracking-[8px] uppercase mb-6 reveal" style="font-family:'Space Mono',monospace; color:var(--acid-green);">✦ Digital Sorcery ✦</p>
       <h1 class="acid-title text-5xl md:text-7xl lg:text-8xl font-bold leading-none mb-6 reveal" id="heroTitle" style="transition-delay:0.15s;">Design Alchemist</h1>
       <p class="text-lg md:text-xl mb-10 reveal" id="heroSubtitle" style="color:var(--metal-silver); font-family:'Space Mono',monospace; transition-delay:0.3s; max-width:500px; margin-left:auto; margin-right:auto;">Transmuting Ideas into Visual Magic</p>
-      <div class="flex gap-4 justify-center lg:justify-start reveal" style="transition-delay:0.45s;"><a href="#portfolio" class="neon-btn">View Work</a> <a href="#contact" class="neon-btn" style="border-color:var(--acid-green); color:var(--acid-green);">Contact Me</a>
+      <div class="flex gap-4 justify-center lg:justify-start reveal" style="transition-delay:0.45s;">
+       <a href="#portfolio" class="neon-btn">View Work</a> <a href="#contact" class="neon-btn" style="border-color:var(--acid-green); color:var(--acid-green);">Contact Me</a>
       </div>
      </div><!-- Wizard SVG -->
      <div class="flex-1 flex justify-center items-center relative reveal" style="transition-delay:0.3s;">
       <div class="wizard-float wizard-glow" id="wizardHero" style="position:relative;">
-       <svg width="320" height="400" viewbox="0 0 320 400" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Magic circle base --> <ellipse cx="160" cy="370" rx="100" ry="15" fill="url(#baseGlow)" opacity="0.5" /> <!-- Robe --> <path d="M110 180 L80 370 L240 370 L210 180 Z" fill="url(#robeGrad)" opacity="0.9" /> <path d="M110 180 L80 370 L160 350 Z" fill="rgba(176,0,255,0.15)" /> <!-- Body --> <rect x="130" y="160" width="60" height="100" rx="10" fill="url(#bodyGrad)" /> <!-- Arms --> <path d="M130 190 L80 240 L90 250 L135 205" fill="url(#robeGrad)" opacity="0.8" /> <path d="M190 190 L250 220 L245 235 L185 210" fill="url(#robeGrad)" opacity="0.8" /> <!-- Head --> <circle cx="160" cy="140" r="35" fill="url(#skinGrad)" /> <!-- Eyes --> <circle cx="148" cy="135" r="4" fill="#39FF14" id="wizEyeL">
+       <svg width="320" height="400" viewbox="0 0 320 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Magic circle base --> <ellipse cx="160" cy="370" rx="100" ry="15" fill="url(#baseGlow)" opacity="0.5" /> <!-- Robe --> <path d="M110 180 L80 370 L240 370 L210 180 Z" fill="url(#robeGrad)" opacity="0.9" /> <path d="M110 180 L80 370 L160 350 Z" fill="rgba(176,0,255,0.15)" /> <!-- Body --> <rect x="130" y="160" width="60" height="100" rx="10" fill="url(#bodyGrad)" /> <!-- Arms --> <path d="M130 190 L80 240 L90 250 L135 205" fill="url(#robeGrad)" opacity="0.8" /> <path d="M190 190 L250 220 L245 235 L185 210" fill="url(#robeGrad)" opacity="0.8" /> <!-- Head --> <circle cx="160" cy="140" r="35" fill="url(#skinGrad)" /> <!-- Eyes --> <circle cx="148" cy="135" r="4" fill="#39FF14" id="wizEyeL">
          <animate attributename="r" values="4;5;4" dur="3s" repeatcount="indefinite" />
         </circle> <circle cx="172" cy="135" r="4" fill="#39FF14" id="wizEyeR">
          <animate attributename="r" values="4;5;4" dur="3s" repeatcount="indefinite" begin="0.5s" />
@@ -420,14 +428,16 @@ body {
       </div>
      </div>
     </div><!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 reveal" style="transition-delay:0.6s;"><span style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:4px; color:var(--metal-silver);">SCROLL</span>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 reveal" style="transition-delay:0.6s;">
+     <span style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:4px; color:var(--metal-silver);">SCROLL</span>
      <div style="width:1px; height:40px; background: linear-gradient(to bottom, var(--electric-purple), transparent);"></div>
     </div>
    </section><!-- Divider -->
    <div class="acid-divider"></div><!-- ==================== ABOUT SECTION ==================== -->
    <section id="about" class="w-full py-24 md:py-32 px-6">
     <div class="max-w-6xl mx-auto">
-     <div class="flex flex-col lg:flex-row gap-16 items-center"><!-- Photo placeholder -->
+     <div class="flex flex-col lg:flex-row gap-16 items-center">
+      <!-- Photo placeholder -->
       <div class="reveal-left flex-shrink-0">
        <div class="glass-card p-3" style="width:280px; height:280px;">
         <div class="w-full h-full rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(176,0,255,0.2), rgba(255,0,127,0.1));">
@@ -471,7 +481,8 @@ body {
       <p class="text-xs tracking-[6px] uppercase mb-4" style="font-family:'Space Mono',monospace; color:var(--acid-green);">✦ Selected Works</p>
       <h2 class="acid-title text-4xl md:text-6xl font-bold">Portfolio</h2>
      </div><!-- Filter buttons -->
-     <div class="flex flex-wrap justify-center gap-3 mb-12 reveal" style="transition-delay:0.15s;"><button class="filter-btn active neon-btn text-xs" style="padding:8px 20px;" data-filter="all">All</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="branding">Branding</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="uiux">UI/UX</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="illustration">Illustration</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="motion">Motion</button>
+     <div class="flex flex-wrap justify-center gap-3 mb-12 reveal" style="transition-delay:0.15s;">
+      <button class="filter-btn active neon-btn text-xs" style="padding:8px 20px;" data-filter="all">All</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="branding">Branding</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="uiux">UI/UX</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="illustration">Illustration</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="motion">Motion</button>
      </div><!-- Portfolio grid -->
      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children" id="portfolioGrid">
      </div>
@@ -498,14 +509,18 @@ body {
      <div class="glass-card p-8 md:p-12 reveal" style="transition-delay:0.15s;">
       <form id="contactForm" class="space-y-6">
        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div><label for="nameInput" class="block text-xs tracking-widest uppercase mb-2" style="font-family:'Space Mono',monospace; color:var(--metal-silver);">Name</label> <input type="text" id="nameInput" class="acid-input" placeholder="Your name" required>
+        <div>
+         <label for="nameInput" class="block text-xs tracking-widest uppercase mb-2" style="font-family:'Space Mono',monospace; color:var(--metal-silver);">Name</label> <input type="text" id="nameInput" class="acid-input" placeholder="Your name" required>
         </div>
-        <div><label for="emailInput" class="block text-xs tracking-widest uppercase mb-2" style="font-family:'Space Mono',monospace; color:var(--metal-silver);">Email</label> <input type="email" id="emailInput" class="acid-input" placeholder="your@email.com" required>
+        <div>
+         <label for="emailInput" class="block text-xs tracking-widest uppercase mb-2" style="font-family:'Space Mono',monospace; color:var(--metal-silver);">Email</label> <input type="email" id="emailInput" class="acid-input" placeholder="your@email.com" required>
         </div>
        </div>
-       <div><label for="msgInput" class="block text-xs tracking-widest uppercase mb-2" style="font-family:'Space Mono',monospace; color:var(--metal-silver);">Message</label> <textarea id="msgInput" class="acid-input" rows="5" placeholder="Tell me about your project..." required></textarea>
+       <div>
+        <label for="msgInput" class="block text-xs tracking-widest uppercase mb-2" style="font-family:'Space Mono',monospace; color:var(--metal-silver);">Message</label> <textarea id="msgInput" class="acid-input" rows="5" placeholder="Tell me about your project..." required></textarea>
        </div>
-       <div class="text-center"><button type="submit" class="neon-btn"> <span id="submitBtnText">Send Spell</span> </button>
+       <div class="text-center">
+        <button type="submit" class="neon-btn"> <span id="submitBtnText">Send Spell</span> </button>
        </div>
       </form>
       <div id="formSuccess" class="hidden text-center py-8">
@@ -516,7 +531,8 @@ body {
        <p class="mt-2 text-sm" style="color:var(--metal-silver); font-family:'Space Mono',monospace;">Your spell has been dispatched. I'll respond soon.</p>
       </div>
      </div><!-- Social links -->
-     <div class="flex justify-center gap-6 mt-12 reveal" style="transition-delay:0.3s;"><a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="Twitter"> <i data-lucide="twitter" style="width:20px;height:20px;color:var(--neon-pink);"></i> </a> <a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="Instagram"> <i data-lucide="instagram" style="width:20px;height:20px;color:var(--electric-purple);"></i> </a> <a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="LinkedIn"> <i data-lucide="linkedin" style="width:20px;height:20px;color:var(--acid-green);"></i> </a> <a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="GitHub"> <i data-lucide="github" style="width:20px;height:20px;color:var(--metal-silver);"></i> </a>
+     <div class="flex justify-center gap-6 mt-12 reveal" style="transition-delay:0.3s;">
+      <a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="Twitter"> <i data-lucide="twitter" style="width:20px;height:20px;color:var(--neon-pink);"></i> </a> <a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="Instagram"> <i data-lucide="instagram" style="width:20px;height:20px;color:var(--electric-purple);"></i> </a> <a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="LinkedIn"> <i data-lucide="linkedin" style="width:20px;height:20px;color:var(--acid-green);"></i> </a> <a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="GitHub"> <i data-lucide="github" style="width:20px;height:20px;color:var(--metal-silver);"></i> </a>
      </div>
     </div>
    </section><!-- ==================== FOOTER ==================== -->
@@ -526,7 +542,8 @@ body {
     </div>
    </footer><!-- Portfolio Modal -->
    <div class="modal-overlay" id="portfolioModal">
-    <div class="glass-card p-6 md:p-8 relative" style="max-width:700px; width:90%; max-height:85%; overflow-y:auto;"><button id="modalClose" style="position:absolute; top:16px; right:16px; color:var(--neon-pink); background:none; border:none; cursor:none; font-size:24px;">✕</button>
+    <div class="glass-card p-6 md:p-8 relative" style="max-width:700px; width:90%; max-height:85%; overflow-y:auto;">
+     <button id="modalClose" style="position:absolute; top:16px; right:16px; color:var(--neon-pink); background:none; border:none; cursor:none; font-size:24px;">✕</button>
      <div id="modalContent"></div>
     </div>
    </div>
@@ -686,26 +703,35 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
   const message = document.getElementById('msgInput').value;
   
   try {
-    // Initialize Email.js
-    emailjs.init('8aUOTXM_7JzXFqZ9W');
-    
-    // Send email
-    await emailjs.send('service_14grmf3', 'template_lb6srdq', {
-      from_name: name,
-      from_email: email,
-      message: message,
-      to_email: 'your-email@example.com'
+    // Send via Formspree
+    const response = await fetch('https://formspree.io/f/mzdyelkd', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message
+      })
     });
     
-    // Success
-    document.getElementById('contactForm').classList.add('hidden');
-    document.getElementById('formSuccess').classList.remove('hidden');
-    document.getElementById('formSuccess').style.display = 'block';
+    if (response.ok) {
+      // Success
+      document.getElementById('contactForm').classList.add('hidden');
+      document.getElementById('formSuccess').classList.remove('hidden');
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      throw new Error('Form submission failed');
+    }
   } catch (error) {
-    console.error('Email error:', error);
+    console.error('Form error:', error);
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalText;
-    alert('Error sending message. Please try again.');
+    // Show inline error message instead of alert
+    const errorMsg = document.createElement('div');
+    errorMsg.style.cssText = 'padding:12px; border-radius:8px; background:#ff6b6b; color:white; font-family:Space Mono,monospace; font-size:12px; margin-bottom:16px; text-align:center;';
+    errorMsg.textContent = 'Error sending message. Please check your Formspree ID and try again.';
+    document.getElementById('contactForm').insertBefore(errorMsg, document.getElementById('contactForm').firstChild);
+    setTimeout(() => errorMsg.remove(), 4000);
   }
 });
 
@@ -818,5 +844,5 @@ setTimeout(() => {
   lucide.createIcons();
 }, 2300);
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ed988871656b445',t:'MTc3NjQwOTAyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ed993bf14cc1fc1',t:'MTc3NjQwOTQ4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
