@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Alchemist — Acid Portfolio</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Microbe&amp;family=Space+Mono:wght@400;700&amp;family=Poppins:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
+  <style>
+html, body { height: 100%; margin: 0; overflow-x: hidden; }
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #0A0A0A;
+  --neon-pink: #FF007F;
+  --electric-purple: #B000FF;
+  --acid-green: #39FF14;
+  --bright-orange: #FF6600;
+  --metal-silver: #C0C0C0;
+  --text-primary: #E0E0E0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  cursor: none;
+}
+
+/* Custom cursor */
+.custom-cursor {
+  width: 20px; height: 20px;
+  border: 2px solid var(--acid-green);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transition: transform 0.1s ease, background 0.2s ease;
+  mix-blend-mode: difference;
+}
+.cursor-trail {
+  width: 8px; height: 8px;
+  background: var(--neon-pink);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99998;
+  opacity: 0.6;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Acid title font */
+.acid-title {
+  font-family: 'Rubik Microbe', cursive;
+  background: linear-gradient(135deg, var(--neon-pink), var(--electric-purple), var(--acid-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(176,0,255,0.4));
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.glass-card:hover {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 30px rgba(255,0,127,0.2), inset 0 0 30px rgba(255,0,127,0.05);
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Wizard float animation */
+@keyframes wizardFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-15px) rotate(1deg); }
+  75% { transform: translateY(10px) rotate(-1deg); }
+}
+.wizard-float { animation: wizardFloat 6s ease-in-out infinite; }
+
+/* Particle system */
+@keyframes particleFloat {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+}
+
+/* Glow pulse */
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(176,0,255,0.3)); }
+  50% { filter: drop-shadow(0 0 40px rgba(255,0,127,0.6)); }
+}
+
+/* Neon button */
+.neon-btn {
+  position: relative;
+  padding: 14px 36px;
+  border: 2px solid var(--neon-pink);
+  background: transparent;
+  color: var(--neon-pink);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  cursor: none;
+}
+.neon-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+  transition: left 0.5s ease;
+  opacity: 0.3;
+}
+.neon-btn:hover::before { left: 100%; }
+.neon-btn:hover {
+  background: var(--neon-pink);
+  color: #000;
+  box-shadow: 0 0 30px rgba(255,0,127,0.5), 0 0 60px rgba(255,0,127,0.2);
+}
+
+/* Noise overlay */
+.noise-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 9999; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Loading screen */
+.loader-screen {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: #000; z-index: 100000;
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+.loader-screen.hidden { opacity: 0; visibility: hidden; }
+
+@keyframes staffSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes runeOrbit {
+  0% { transform: rotate(0deg) translateX(50px) rotate(0deg); opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); opacity: 0.3; }
+}
+
+.staff-spin { animation: staffSpin 2s linear infinite; }
+.rune-orbit { animation: runeOrbit 3s linear infinite; }
+
+/* Background flowing gradient */
+@keyframes bgFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bg-flow {
+  background: linear-gradient(270deg, rgba(176,0,255,0.08), rgba(255,0,127,0.05), rgba(57,255,20,0.04), rgba(176,0,255,0.08));
+  background-size: 400% 400%;
+  animation: bgFlow 20s ease infinite;
+}
+
+/* Portfolio modal */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
+  z-index: 50000; display: none; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.modal-overlay.active { display: flex; opacity: 1; }
+
+/* Wizard SVG glow */
+.wizard-glow { animation: glowPulse 3s ease-in-out infinite; }
+
+/* Section divider */
+.acid-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--electric-purple), var(--neon-pink), var(--acid-green), transparent);
+  margin: 0 auto;
+  width: 80%;
+}
+
+/* Nav */
+.nav-glass {
+  background: rgba(10,10,10,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Service icon container */
+.service-icon-wrap {
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, rgba(176,0,255,0.15), rgba(255,0,127,0.15));
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(176,0,255,0.3);
+  transition: all 0.4s ease;
+}
+.glass-card:hover .service-icon-wrap {
+  background: linear-gradient(135deg, rgba(176,0,255,0.3), rgba(255,0,127,0.3));
+  box-shadow: 0 0 20px rgba(176,0,255,0.3);
+}
+
+/* Form inputs */
+.acid-input {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--text-primary);
+  font-family: 'Space Mono', monospace;
+  width: 100%;
+  transition: all 0.3s ease;
+  outline: none;
+}
+.acid-input:focus {
+  border-color: var(--electric-purple);
+  box-shadow: 0 0 20px rgba(176,0,255,0.2);
+}
+.acid-input::placeholder { color: rgba(255,255,255,0.2); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: var(--electric-purple); border-radius: 3px; }
+
+/* Op-art pattern */
+.op-art-bg {
+  background-image: repeating-conic-gradient(rgba(176,0,255,0.03) 0% 25%, transparent 0% 50%);
+  background-size: 40px 40px;
+}
+
+/* Text glitch */
+@keyframes textGlitch {
+  0%, 100% { text-shadow: 2px 0 var(--neon-pink), -2px 0 var(--acid-green); }
+  25% { text-shadow: -2px 0 var(--neon-pink), 2px 0 var(--acid-green); }
+  50% { text-shadow: 2px 2px var(--neon-pink), -2px -2px var(--acid-green); }
+  75% { text-shadow: -2px 2px var(--neon-pink), 2px -2px var(--acid-green); }
+}
+
+/* Staggered children */
+.stagger-children > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { transition-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { transition-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { transition-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { transition-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { transition-delay: 0.6s; }
+
+/* Floating particles in hero */
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particleFloat 8s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .acid-title { font-size: 2.5rem !important; }
+  body { cursor: auto; }
+  .custom-cursor, .cursor-trail { display: none; }
+}
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto bg-flow op-art-bg" style="background-color: var(--bg);"><!-- Noise overlay -->
+   <div class="noise-overlay"></div><!-- Custom Cursor -->
+   <div class="custom-cursor" id="cursor"></div>
+   <div class="cursor-trail" id="cursorTrail"></div><!-- Loading Screen -->
+   <div class="loader-screen" id="loader">
+    <div style="position:relative; width:120px; height:120px;">
+     <svg class="staff-spin" width="120" height="120" viewbox="0 0 120 120" style="position:absolute; top:0; left:0;"><circle cx="60" cy="60" r="50" fill="none" stroke="url(#loaderGrad)" stroke-width="2" stroke-dasharray="10 5" /> <defs>
+       <lineargradient id="loaderGrad">
+        <stop offset="0%" stop-color="#FF007F" />
+        <stop offset="100%" stop-color="#B000FF" />
+       </lineargradient>
+      </defs>
+     </svg>
+     <div class="rune-orbit" style="position:absolute; top:50%; left:50%; width:12px; height:12px;">
+      <div style="width:12px; height:12px; background:#39FF14; border-radius:50%; box-shadow: 0 0 15px #39FF14;"></div>
+     </div>
+     <div class="rune-orbit" style="position:absolute; top:50%; left:50%; width:10px; height:10px; animation-delay: -1s;">
+      <div style="width:10px; height:10px; background:#FF007F; border-radius:50%; box-shadow: 0 0 15px #FF007F;"></div>
+     </div>
+     <div class="rune-orbit" style="position:absolute; top:50%; left:50%; width:8px; height:8px; animation-delay: -2s;">
+      <div style="width:8px; height:8px; background:#B000FF; border-radius:50%; box-shadow: 0 0 15px #B000FF;"></div>
+     </div><!-- Center wizard icon -->
+     <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:32px;">
+      🧙‍♂️
+     </div>
+    </div>
+    <p style="margin-top:30px; font-family:'Space Mono',monospace; color:#B000FF; letter-spacing:4px; font-size:12px;">CONJURING...</p>
+   </div><!-- Navigation -->
+   <nav class="nav-glass fixed top-0 left-0 w-full z-[10000] px-6 py-4" id="mainNav">
+    <div class="max-w-7xl mx-auto flex items-center justify-between"><a href="#hero" class="text-xl font-bold" style="font-family:'Rubik Microbe',cursive; color: var(--neon-pink);" id="navLogo">DA</a>
+     <div class="hidden md:flex gap-8 items-center"><a href="#about" class="nav-link text-sm font-semibold tracking-widest uppercase transition-colors hover:text-[#FF007F]" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">About</a> <a href="#portfolio" class="nav-link text-sm font-semibold tracking-widest uppercase transition-colors hover:text-[#FF007F]" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Work</a> <a href="#services" class="nav-link text-sm font-semibold tracking-widest uppercase transition-colors hover:text-[#FF007F]" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Services</a> <a href="#contact" class="neon-btn text-xs" style="padding:10px 24px;">Contact</a>
+     </div><button id="mobileMenuBtn" class="md:hidden" style="color:var(--neon-pink);"> <i data-lucide="menu" style="width:28px;height:28px;"></i> </button>
+    </div><!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 mt-4 pb-4"><a href="#about" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">About</a> <a href="#portfolio" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Work</a> <a href="#services" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--metal-silver);">Services</a> <a href="#contact" class="text-sm font-semibold tracking-widest uppercase py-2" style="font-family:'Space Mono',monospace; color: var(--neon-pink);">Contact</a>
+    </div>
+   </nav><!-- ==================== HERO SECTION ==================== -->
+   <section id="hero" class="relative w-full flex items-center justify-center overflow-hidden" style="min-height: 100%; padding: 120px 24px 80px;"><!-- Floating particles -->
+    <div class="hero-particle" style="top:15%;left:10%;width:6px;height:6px;background:#FF007F;animation-delay:0s;box-shadow:0 0 10px #FF007F;"></div>
+    <div class="hero-particle" style="top:25%;right:15%;width:4px;height:4px;background:#39FF14;animation-delay:-2s;box-shadow:0 0 10px #39FF14;"></div>
+    <div class="hero-particle" style="top:60%;left:20%;width:5px;height:5px;background:#B000FF;animation-delay:-4s;box-shadow:0 0 10px #B000FF;"></div>
+    <div class="hero-particle" style="bottom:20%;right:25%;width:7px;height:7px;background:#FF6600;animation-delay:-1s;box-shadow:0 0 10px #FF6600;"></div>
+    <div class="hero-particle" style="top:40%;left:70%;width:3px;height:3px;background:#C0C0C0;animation-delay:-3s;box-shadow:0 0 10px #C0C0C0;"></div>
+    <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-20"><!-- Text content -->
+     <div class="flex-1 text-center lg:text-left z-10">
+      <p class="text-xs tracking-[8px] uppercase mb-6 reveal" style="font-family:'Space Mono',monospace; color:var(--acid-green);">✦ Digital Sorcery ✦</p>
+      <h1 class="acid-title text-5xl md:text-7xl lg:text-8xl font-bold leading-none mb-6 reveal" id="heroTitle" style="transition-delay:0.15s;">Design Alchemist</h1>
+      <p class="text-lg md:text-xl mb-10 reveal" id="heroSubtitle" style="color:var(--metal-silver); font-family:'Space Mono',monospace; transition-delay:0.3s; max-width:500px; margin-left:auto; margin-right:auto;">Transmuting Ideas into Visual Magic</p>
+      <div class="flex gap-4 justify-center lg:justify-start reveal" style="transition-delay:0.45s;"><a href="#portfolio" class="neon-btn">View Work</a> <a href="#contact" class="neon-btn" style="border-color:var(--acid-green); color:var(--acid-green);">Contact Me</a>
+      </div>
+     </div><!-- Wizard SVG -->
+     <div class="flex-1 flex justify-center items-center relative reveal" style="transition-delay:0.3s;">
+      <div class="wizard-float wizard-glow" id="wizardHero" style="position:relative;">
+       <svg width="320" height="400" viewbox="0 0 320 400" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Magic circle base --> <ellipse cx="160" cy="370" rx="100" ry="15" fill="url(#baseGlow)" opacity="0.5" /> <!-- Robe --> <path d="M110 180 L80 370 L240 370 L210 180 Z" fill="url(#robeGrad)" opacity="0.9" /> <path d="M110 180 L80 370 L160 350 Z" fill="rgba(176,0,255,0.15)" /> <!-- Body --> <rect x="130" y="160" width="60" height="100" rx="10" fill="url(#bodyGrad)" /> <!-- Arms --> <path d="M130 190 L80 240 L90 250 L135 205" fill="url(#robeGrad)" opacity="0.8" /> <path d="M190 190 L250 220 L245 235 L185 210" fill="url(#robeGrad)" opacity="0.8" /> <!-- Head --> <circle cx="160" cy="140" r="35" fill="url(#skinGrad)" /> <!-- Eyes --> <circle cx="148" cy="135" r="4" fill="#39FF14" id="wizEyeL">
+         <animate attributename="r" values="4;5;4" dur="3s" repeatcount="indefinite" />
+        </circle> <circle cx="172" cy="135" r="4" fill="#39FF14" id="wizEyeR">
+         <animate attributename="r" values="4;5;4" dur="3s" repeatcount="indefinite" begin="0.5s" />
+        </circle> <!-- Eye glow --> <circle cx="148" cy="135" r="8" fill="#39FF14" opacity="0.2">
+         <animate attributename="r" values="8;12;8" dur="3s" repeatcount="indefinite" />
+        </circle> <circle cx="172" cy="135" r="8" fill="#39FF14" opacity="0.2">
+         <animate attributename="r" values="8;12;8" dur="3s" repeatcount="indefinite" begin="0.5s" />
+        </circle> <!-- Hat --> <path d="M115 145 L160 50 L205 145 Z" fill="url(#hatGrad)" /> <path d="M160 50 L170 48 L165 80" fill="#FF007F" opacity="0.5" /> <!-- Hat band --> <rect x="115" y="140" width="90" height="8" rx="4" fill="url(#bandGrad)" /> <!-- Hat star --> <polygon points="160,70 163,78 172,78 165,83 168,92 160,87 152,92 155,83 148,78 157,78" fill="#FFD700" opacity="0.8">
+         <animate attributename="opacity" values="0.8;1;0.8" dur="2s" repeatcount="indefinite" />
+        </polygon> <!-- Staff --> <line x1="250" y1="220" x2="270" y2="100" stroke="url(#staffGrad)" stroke-width="5" stroke-linecap="round" /> <!-- Staff orb --> <circle cx="272" cy="92" r="15" fill="url(#orbGrad)">
+         <animate attributename="r" values="15;18;15" dur="2s" repeatcount="indefinite" />
+        </circle> <circle cx="272" cy="92" r="25" fill="#B000FF" opacity="0.15">
+         <animate attributename="r" values="25;35;25" dur="2s" repeatcount="indefinite" />
+        </circle> <!-- Rune particles --> <text x="90" y="160" font-size="14" fill="#B000FF" opacity="0.6" font-family="serif">
+         ✦ 
+         <animatetransform attributename="transform" type="translate" values="0,0;-5,-20;0,0" dur="4s" repeatcount="indefinite" />
+         <animate attributename="opacity" values="0.6;1;0.6" dur="4s" repeatcount="indefinite" />
+        </text> <text x="220" y="170" font-size="12" fill="#FF007F" opacity="0.5" font-family="serif">
+         ⚝ 
+         <animatetransform attributename="transform" type="translate" values="0,0;8,-25;0,0" dur="5s" repeatcount="indefinite" />
+        </text> <text x="260" y="150" font-size="10" fill="#39FF14" opacity="0.4" font-family="serif">
+         ◇ 
+         <animatetransform attributename="transform" type="translate" values="0,0;-3,-15;0,0" dur="3.5s" repeatcount="indefinite" />
+        </text> <!-- Belt runes --> <rect x="140" y="230" width="40" height="6" rx="3" fill="url(#bandGrad)" opacity="0.6" /> <!-- Gradients --> <defs>
+         <lineargradient id="robeGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#1a0033" />
+          <stop offset="50%" stop-color="#2d004d" />
+          <stop offset="100%" stop-color="#0d001a" />
+         </lineargradient>
+         <lineargradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2d004d" />
+          <stop offset="100%" stop-color="#1a0033" />
+         </lineargradient>
+         <lineargradient id="hatGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0%" stop-color="#B000FF" />
+          <stop offset="50%" stop-color="#2d004d" />
+          <stop offset="100%" stop-color="#1a0033" />
+         </lineargradient>
+         <lineargradient id="bandGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#FF007F" />
+          <stop offset="50%" stop-color="#B000FF" />
+          <stop offset="100%" stop-color="#39FF14" />
+         </lineargradient>
+         <lineargradient id="staffGrad" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#4a2800" />
+          <stop offset="100%" stop-color="#C0C0C0" />
+         </lineargradient>
+         <radialgradient id="orbGrad">
+          <stop offset="0%" stop-color="#FF007F" />
+          <stop offset="50%" stop-color="#B000FF" />
+          <stop offset="100%" stop-color="#39FF14" stop-opacity="0.3" />
+         </radialgradient>
+         <radialgradient id="skinGrad">
+          <stop offset="0%" stop-color="#d4a574" />
+          <stop offset="100%" stop-color="#b8865a" />
+         </radialgradient>
+         <radialgradient id="baseGlow">
+          <stop offset="0%" stop-color="#B000FF" stop-opacity="0.6" />
+          <stop offset="100%" stop-color="transparent" />
+         </radialgradient>
+        </defs>
+       </svg>
+      </div>
+     </div>
+    </div><!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 reveal" style="transition-delay:0.6s;"><span style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:4px; color:var(--metal-silver);">SCROLL</span>
+     <div style="width:1px; height:40px; background: linear-gradient(to bottom, var(--electric-purple), transparent);"></div>
+    </div>
+   </section><!-- Divider -->
+   <div class="acid-divider"></div><!-- ==================== ABOUT SECTION ==================== -->
+   <section id="about" class="w-full py-24 md:py-32 px-6">
+    <div class="max-w-6xl mx-auto">
+     <div class="flex flex-col lg:flex-row gap-16 items-center"><!-- Photo placeholder -->
+      <div class="reveal-left flex-shrink-0">
+       <div class="glass-card p-3" style="width:280px; height:280px;">
+        <div class="w-full h-full rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(176,0,255,0.2), rgba(255,0,127,0.1));">
+         <div class="text-center">
+          <div style="font-size:64px;">
+           🧙‍♂️
+          </div>
+          <p style="font-family:'Space Mono',monospace; font-size:10px; color:var(--metal-silver); margin-top:12px; letter-spacing:2px;">YOUR PHOTO HERE</p>
+          <p style="font-size:9px; color:rgba(255,255,255,0.3);">500 × 500px</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- About text -->
+      <div class="flex-1 reveal-right">
+       <p class="text-xs tracking-[6px] uppercase mb-4" style="font-family:'Space Mono',monospace; color:var(--acid-green);">✦ Who Am I</p>
+       <h2 class="acid-title text-4xl md:text-5xl font-bold mb-8" id="aboutHeading">About Me</h2>
+       <p class="text-base leading-relaxed mb-6" id="aboutText" style="color:var(--metal-silver); font-family:'Poppins',sans-serif; max-width:600px;">A design sorcerer specializing in transmuting raw ideas into mesmerizing visual experiences. With a deep understanding of brand alchemy and digital craft, I weave together aesthetics, functionality, and emotion to create designs that cast a lasting spell on audiences.</p>
+       <p class="text-base leading-relaxed mb-8" style="color:rgba(192,192,192,0.6); font-family:'Poppins',sans-serif; max-width:600px;">From brand identities to immersive digital experiences, every project is an incantation — carefully crafted to resonate, inspire, and transform.</p><!-- Stats -->
+       <div class="flex gap-8 flex-wrap">
+        <div>
+         <p class="text-3xl font-bold" style="font-family:'Rubik Microbe',cursive; color:var(--neon-pink);">8+</p>
+         <p style="font-family:'Space Mono',monospace; font-size:11px; color:var(--metal-silver);">Years Experience</p>
+        </div>
+        <div>
+         <p class="text-3xl font-bold" style="font-family:'Rubik Microbe',cursive; color:var(--electric-purple);">120+</p>
+         <p style="font-family:'Space Mono',monospace; font-size:11px; color:var(--metal-silver);">Projects Done</p>
+        </div>
+        <div>
+         <p class="text-3xl font-bold" style="font-family:'Rubik Microbe',cursive; color:var(--acid-green);">50+</p>
+         <p style="font-family:'Space Mono',monospace; font-size:11px; color:var(--metal-silver);">Happy Clients</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="acid-divider"></div><!-- ==================== PORTFOLIO SECTION ==================== -->
+   <section id="portfolio" class="w-full py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16 reveal">
+      <p class="text-xs tracking-[6px] uppercase mb-4" style="font-family:'Space Mono',monospace; color:var(--acid-green);">✦ Selected Works</p>
+      <h2 class="acid-title text-4xl md:text-6xl font-bold">Portfolio</h2>
+     </div><!-- Filter buttons -->
+     <div class="flex flex-wrap justify-center gap-3 mb-12 reveal" style="transition-delay:0.15s;"><button class="filter-btn active neon-btn text-xs" style="padding:8px 20px;" data-filter="all">All</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="branding">Branding</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="uiux">UI/UX</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="illustration">Illustration</button> <button class="filter-btn neon-btn text-xs" style="padding:8px 20px; border-color:var(--metal-silver); color:var(--metal-silver);" data-filter="motion">Motion</button>
+     </div><!-- Portfolio grid -->
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children" id="portfolioGrid">
+     </div>
+    </div>
+   </section>
+   <div class="acid-divider"></div><!-- ==================== SERVICES SECTION ==================== -->
+   <section id="services" class="w-full py-24 md:py-32 px-6">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16 reveal">
+      <p class="text-xs tracking-[6px] uppercase mb-4" style="font-family:'Space Mono',monospace; color:var(--acid-green);">✦ What I Do</p>
+      <h2 class="acid-title text-4xl md:text-6xl font-bold">Services</h2>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children" id="servicesGrid">
+     </div>
+    </div>
+   </section>
+   <div class="acid-divider"></div><!-- ==================== CONTACT SECTION ==================== -->
+   <section id="contact" class="w-full py-24 md:py-32 px-6">
+    <div class="max-w-4xl mx-auto">
+     <div class="text-center mb-16 reveal">
+      <p class="text-xs tracking-[6px] uppercase mb-4" style="font-family:'Space Mono',monospace; color:var(--acid-green);">✦ Get In Touch</p>
+      <h2 class="acid-title text-4xl md:text-6xl font-bold" id="contactHeading">Summon Me</h2>
+     </div>
+     <div class="glass-card p-8 md:p-12 reveal" style="transition-delay:0.15s;">
+      <form id="contactForm" class="space-y-6">
+       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div><label for="nameInput" class="block text-xs tracking-widest uppercase mb-2" style="font-family:'Space Mono',monospace; color:var(--metal-silver);">Name</label> <input type="text" id="nameInput" class="acid-input" placeholder="Your name" required>
+        </div>
+        <div><label for="emailInput" class="block text-xs tracking-widest uppercase mb-2" style="font-family:'Space Mono',monospace; color:var(--metal-silver);">Email</label> <input type="email" id="emailInput" class="acid-input" placeholder="your@email.com" required>
+        </div>
+       </div>
+       <div><label for="msgInput" class="block text-xs tracking-widest uppercase mb-2" style="font-family:'Space Mono',monospace; color:var(--metal-silver);">Message</label> <textarea id="msgInput" class="acid-input" rows="5" placeholder="Tell me about your project..." required></textarea>
+       </div>
+       <div class="text-center"><button type="submit" class="neon-btn"> <span id="submitBtnText">Send Spell</span> </button>
+       </div>
+      </form>
+      <div id="formSuccess" class="hidden text-center py-8">
+       <div style="font-size:48px;">
+        ✨
+       </div>
+       <p class="mt-4 text-lg font-bold" style="color:var(--acid-green); font-family:'Rubik Microbe',cursive;">Message Sent!</p>
+       <p class="mt-2 text-sm" style="color:var(--metal-silver); font-family:'Space Mono',monospace;">Your spell has been dispatched. I'll respond soon.</p>
+      </div>
+     </div><!-- Social links -->
+     <div class="flex justify-center gap-6 mt-12 reveal" style="transition-delay:0.3s;"><a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="Twitter"> <i data-lucide="twitter" style="width:20px;height:20px;color:var(--neon-pink);"></i> </a> <a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="Instagram"> <i data-lucide="instagram" style="width:20px;height:20px;color:var(--electric-purple);"></i> </a> <a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="LinkedIn"> <i data-lucide="linkedin" style="width:20px;height:20px;color:var(--acid-green);"></i> </a> <a href="#" class="glass-card p-4 flex items-center justify-center" style="width:50px;height:50px;" aria-label="GitHub"> <i data-lucide="github" style="width:20px;height:20px;color:var(--metal-silver);"></i> </a>
+     </div>
+    </div>
+   </section><!-- ==================== FOOTER ==================== -->
+   <footer class="w-full py-10 px-6" style="border-top:1px solid rgba(255,255,255,0.05);">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+     <p class="text-xs" id="footerText" style="font-family:'Space Mono',monospace; color:rgba(192,192,192,0.4);">© 2025 Design Alchemist. All rights reserved.</p><button id="backToTop" class="neon-btn text-xs" style="padding:8px 16px; border-color:var(--electric-purple); color:var(--electric-purple);">↑ Top</button>
+    </div>
+   </footer><!-- Portfolio Modal -->
+   <div class="modal-overlay" id="portfolioModal">
+    <div class="glass-card p-6 md:p-8 relative" style="max-width:700px; width:90%; max-height:85%; overflow-y:auto;"><button id="modalClose" style="position:absolute; top:16px; right:16px; color:var(--neon-pink); background:none; border:none; cursor:none; font-size:24px;">✕</button>
+     <div id="modalContent"></div>
+    </div>
+   </div>
+  </div><!-- end app-wrapper -->
+  <script>
+// ===== DATA =====
+const portfolioItems = [
+  { id: 1, title: "Arcane Brand Identity", desc: "Complete brand system for a mystical tech startup", category: "branding", color: "#FF007F", image: "https://your-image-url.com/project1.jpg"   },
+  { id: 2, title: "Potion Lab App", desc: "Mobile UI/UX for a wellness application", category: "uiux", color: "#B000FF" },
+  { id: 3, title: "Enchanted Illustrations", desc: "Series of digital illustrations for editorial", category: "illustration", color: "#39FF14" },
+  { id: 4, title: "Crystal Motion", desc: "Motion graphics for product launch", category: "motion", color: "#FF6600" },
+  { id: 5, title: "Spellbound E-Commerce", desc: "UI/UX design for luxury fashion brand", category: "uiux", color: "#FF007F" },
+  { id: 6, title: "Rune Typography", desc: "Custom typeface and brand identity system", category: "branding", color: "#B000FF" },
+];
+
+const services = [
+  { icon: "palette", title: "Brand Design", desc: "Crafting unique brand identities that cast lasting impressions" },
+  { icon: "layout", title: "UI/UX Design", desc: "Designing intuitive digital experiences with magical flow" },
+  { icon: "pen-tool", title: "Illustration", desc: "Creating enchanting visuals that tell compelling stories" },
+  { icon: "play-circle", title: "Motion Design", desc: "Bringing static designs to life with fluid animations" },
+  { icon: "monitor", title: "Web Design", desc: "Building immersive web experiences with modern sorcery" },
+  { icon: "sparkles", title: "Creative Direction", desc: "Guiding visual narratives from concept to conjuration" },
+];
+
+// ===== RENDER PORTFOLIO =====
+function renderPortfolio(filter = 'all') {
+  const grid = document.getElementById('portfolioGrid');
+  grid.innerHTML = '';
+  const items = filter === 'all' ? portfolioItems : portfolioItems.filter(i => i.category === filter);
+  items.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'glass-card overflow-hidden reveal';
+    card.style.transitionDelay = `${idx * 0.1}s`;
+    card.innerHTML = `
+      <div class="relative" style="height:220px; background: linear-gradient(135deg, ${item.color}15, ${item.color}08); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <div style="text-align:center;">
+          <div style="font-size:48px; margin-bottom:8px;">🎨</div>
+          <p style="font-family:'Space Mono',monospace; font-size:9px; color:var(--metal-silver); letter-spacing:2px;">IMAGE PLACEHOLDER</p>
+          <p style="font-size:8px; color:rgba(255,255,255,0.2);">1200 × 800px</p>
+        </div>
+        <div style="position:absolute; top:12px; right:12px; padding:4px 10px; border-radius:20px; background:${item.color}25; border:1px solid ${item.color}50;">
+          <span style="font-family:'Space Mono',monospace; font-size:9px; color:${item.color}; text-transform:uppercase; letter-spacing:1px;">${item.category}</span>
+        </div>
+      </div>
+      <div class="p-5">
+        <h3 class="font-bold text-lg mb-2" style="font-family:'Poppins',sans-serif; color:var(--text-primary);">${item.title}</h3>
+        <p class="text-sm" style="color:var(--metal-silver); font-family:'Space Mono',monospace;">${item.desc}</p>
+      </div>
+    `;
+    card.addEventListener('click', () => openModal(item));
+    grid.appendChild(card);
+  });
+  // Trigger reveal
+  requestAnimationFrame(() => {
+    grid.querySelectorAll('.reveal').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 50);
+    });
+  });
+}
+
+// ===== RENDER SERVICES =====
+function renderServices() {
+  const grid = document.getElementById('servicesGrid');
+  services.forEach((svc, idx) => {
+    const card = document.createElement('div');
+    card.className = 'glass-card p-6 reveal';
+    card.style.transitionDelay = `${idx * 0.1}s`;
+    card.innerHTML = `
+      <div class="service-icon-wrap mb-5">
+        <i data-lucide="${svc.icon}" style="width:32px;height:32px;color:var(--electric-purple);"></i>
+      </div>
+      <h3 class="font-bold text-lg mb-3" style="font-family:'Poppins',sans-serif;">${svc.title}</h3>
+      <p class="text-sm" style="color:var(--metal-silver); font-family:'Space Mono',monospace;">${svc.desc}</p>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// ===== MODAL =====
+function openModal(item) {
+  const modal = document.getElementById('portfolioModal');
+  document.getElementById('modalContent').innerHTML = `
+    <div style="height:250px; background: linear-gradient(135deg, ${item.color}15, ${item.color}08); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+      <div style="text-align:center;">
+        <div style="font-size:64px;">🎨</div>
+        <p style="font-family:'Space Mono',monospace; font-size:10px; color:var(--metal-silver); letter-spacing:2px; margin-top:8px;">PROJECT IMAGE</p>
+      </div>
+    </div>
+    <h3 class="text-2xl font-bold mb-3" style="font-family:'Poppins',sans-serif; color:var(--text-primary);">${item.title}</h3>
+    <span style="display:inline-block; padding:4px 12px; border-radius:20px; background:${item.color}20; border:1px solid ${item.color}50; font-family:'Space Mono',monospace; font-size:10px; color:${item.color}; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;">${item.category}</span>
+    <p style="color:var(--metal-silver); font-family:'Space Mono',monospace; line-height:1.8;">${item.desc}</p>
+  `;
+  modal.classList.add('active');
+}
+document.getElementById('modalClose').addEventListener('click', () => {
+  document.getElementById('portfolioModal').classList.remove('active');
+});
+document.getElementById('portfolioModal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
+});
+
+// ===== FILTER =====
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.style.borderColor = 'var(--metal-silver)';
+      b.style.color = 'var(--metal-silver)';
+      b.style.background = 'transparent';
+      b.classList.remove('active');
+    });
+    btn.style.borderColor = 'var(--neon-pink)';
+    btn.style.color = 'var(--neon-pink)';
+    btn.classList.add('active');
+    renderPortfolio(btn.dataset.filter);
+  });
+});
+
+// ===== SCROLL REVEAL =====
+function initScrollReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+}
+
+// ===== CUSTOM CURSOR =====
+const cursor = document.getElementById('cursor');
+const trail = document.getElementById('cursorTrail');
+let mouseX = 0, mouseY = 0;
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX - 10 + 'px';
+  cursor.style.top = mouseY - 10 + 'px';
+  setTimeout(() => {
+    trail.style.left = mouseX - 4 + 'px';
+    trail.style.top = mouseY - 4 + 'px';
+  }, 80);
+});
+document.querySelectorAll('a, button, .glass-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2)'; cursor.style.background = 'rgba(255,0,127,0.2)'; });
+  el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; cursor.style.background = 'transparent'; });
+});
+
+// ===== FORM =====
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  document.getElementById('contactForm').classList.add('hidden');
+  document.getElementById('formSuccess').classList.remove('hidden');
+  document.getElementById('formSuccess').style.display = 'block';
+});
+
+// ===== BACK TO TOP =====
+document.getElementById('backToTop').addEventListener('click', () => {
+  document.getElementById('app-wrapper').scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ===== NAV SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    // Close mobile menu
+    document.getElementById('mobileMenu').classList.add('hidden');
+  });
+});
+
+// ===== MOBILE MENU =====
+document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('hidden');
+  menu.classList.toggle('flex');
+});
+
+// ===== LOADER =====
+setTimeout(() => {
+  document.getElementById('loader').classList.add('hidden');
+}, 2200);
+
+// ===== INIT =====
+renderPortfolio();
+renderServices();
+
+// ===== ELEMENT SDK =====
+const defaultConfig = {
+  hero_title: 'Design Alchemist',
+  hero_subtitle: 'Transmuting Ideas into Visual Magic',
+  about_heading: 'About Me',
+  about_text: 'A design sorcerer specializing in transmuting raw ideas into mesmerizing visual experiences. With a deep understanding of brand alchemy and digital craft, I weave together aesthetics, functionality, and emotion to create designs that cast a lasting spell on audiences.',
+  contact_heading: 'Summon Me',
+  footer_text: '© 2025 Design Alchemist. All rights reserved.',
+  background_color: '#0A0A0A',
+  surface_color: '#1a1a2e',
+  text_color: '#E0E0E0',
+  primary_action_color: '#FF007F',
+  secondary_action_color: '#B000FF',
+  font_family: 'Poppins',
+  font_size: 16
+};
+
+function applyConfig(config) {
+  const c = { ...defaultConfig, ...config };
+
+  // Text
+  document.getElementById('heroTitle').textContent = c.hero_title;
+  document.getElementById('heroSubtitle').textContent = c.hero_subtitle;
+  document.getElementById('aboutHeading').textContent = c.about_heading;
+  document.getElementById('aboutText').textContent = c.about_text;
+  document.getElementById('contactHeading').textContent = c.contact_heading;
+  document.getElementById('footerText').textContent = c.footer_text;
+
+  // Colors
+  document.documentElement.style.setProperty('--bg', c.background_color);
+  document.documentElement.style.setProperty('--neon-pink', c.primary_action_color);
+  document.documentElement.style.setProperty('--electric-purple', c.secondary_action_color);
+  document.documentElement.style.setProperty('--text-primary', c.text_color);
+  document.getElementById('app-wrapper').style.backgroundColor = c.background_color;
+
+  // Font
+  const fontStack = `${c.font_family}, Poppins, sans-serif`;
+  document.body.style.fontFamily = fontStack;
+  const baseSize = c.font_size || 16;
+  document.getElementById('heroTitle').style.fontSize = `${baseSize * 4}px`;
+  document.getElementById('heroSubtitle').style.fontSize = `${baseSize * 1.25}px`;
+  document.getElementById('aboutText').style.fontSize = `${baseSize}px`;
+}
+
+if (window.elementSdk) {
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => { applyConfig(config); },
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+        { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+        { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } },
+      ],
+      borderables: [],
+      fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+      fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } },
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['hero_title', config.hero_title || defaultConfig.hero_title],
+      ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+      ['about_heading', config.about_heading || defaultConfig.about_heading],
+      ['about_text', config.about_text || defaultConfig.about_text],
+      ['contact_heading', config.contact_heading || defaultConfig.contact_heading],
+      ['footer_text', config.footer_text || defaultConfig.footer_text],
+    ])
+  });
+}
+
+// Init scroll reveal after loader
+setTimeout(() => {
+  initScrollReveal();
+  lucide.createIcons();
+}, 2300);
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ed73553b10bb445',t:'MTc3NjM4NDY0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
